@@ -1,0 +1,33 @@
+covid_flight_count:
+city, date, covid_count, count_deaths, total_flight_count
+
+inter_city_flight_data:
+date, from_city, from_airport, to_city, to_airport, flight_count
+
+------
+-> read covid.csv line by line
+-> read date 'd'
+-> read the city 'x'
+-> read the covid count as 'covid_cout'
+-> read the covid death as 'covid_deaths'
+-> airport_codes := get all airport codes for 'x' using AirportCode dataset
+-> total_flights := 0
+-> map = {}
+-> for every airport_code in airport_codes:
+	-> query_results := search flight dataset for origin == airport_code and date == 'd'
+	-> total_flights += count(query_results)
+	-> for res in query_results:
+			-> destination_city := search city for res['destination'] airport code using AirportCode dataset
+			   // (from_city, from_airport, to_city, to_airport)
+			-> map[('x', airport_code, destination_city, res['destination'])] += 1
+
+	-> query_results := search flight dataset for destination == airport_code and date == 'd'
+	-> total_flights += count(query_results)
+	-> for res in query_results:
+			-> origin_city := search city for res['origin'] airport code using the AirportCode dataset
+			   // (from_city, from_airport, to_city, to_airport)
+			-> map[(origin_city, res['origin'], 'x', airport_code)] += 1
+
+-> Insert all the values in the map to the inter_city_flight_data.csv
+-> Insert ('x', 'd', 'covid_cout', 'covid_deaths', total_flights) 
+
