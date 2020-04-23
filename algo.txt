@@ -1,5 +1,5 @@
 covid_flight_count:
-city, date, covid_count, count_deaths, total_flight_count
+city, date, covid_count, count_deaths, total_incoming_flight_count, total_outgoing_flight_count
 
 inter_city_flight_data:
 date, from_city, from_airport, to_city, to_airport, flight_count
@@ -31,3 +31,15 @@ date, from_city, from_airport, to_city, to_airport, flight_count
 -> Insert all the values in the map to the inter_city_flight_data.csv
 -> Insert ('x', 'd', 'covid_cout', 'covid_deaths', total_flights) 
 
+----
+data cleaning
+hpc clusters
+pyspark, sparksql, mapreduce
+
+----
+Municiplity -> Los Angeles
+county -> los angels
+
+
+1. OpenRefine 
+2. How can we use Jupyter Nb, with pySpark, on Hpc cluster
