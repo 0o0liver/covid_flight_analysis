@@ -1,0 +1,13 @@
+New York City,New York
+Los Angeles,California
+San Francisco,California
+Denver,Colorado
+Philadelphia,Pennsylvania
+District of Columbia,District of Columbia
+Dallas,Texas
+San Diego,California
+Miami-Dade,Florida
+Cook,Illinois
+Suffolk,Massachusetts
+Snohomish,Washington
+Maricopa,Arizona
