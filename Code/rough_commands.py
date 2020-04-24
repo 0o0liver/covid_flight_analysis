@@ -4,11 +4,17 @@ MUNI = 10
 TYPE = 2
 ORIGIN = 5
 DEST = 6
+IDENT = 1 #ident
+GST_CODE = 12
+COUNTY = 1
 
 def processString(input_string):
 	if input_string == None:
 		return input_string
 	return input_string.lstrip().rstrip().upper()
+
+def getSqlList(lst):
+	return "(\""+'\",\"'.join(lst)+"\")"
 
 def getAirportTypeListFor(temp_list):
 	return [processString(x) for x in temp_list]
@@ -40,25 +46,45 @@ def getCityList(filename):
 
 def getAirportDataDFrame(filename):
 	airport = sc.textFile(filename)
-	schema = airport.mapPartitions(lambda line: reader(line)).take(1)[0]
+	schema = ['ident','type','municipality','gst_code']
 	valid_data = airport \
-				.mapPartitions(lambda line: reader(line)) \
-				.map(lambda arr: [processString(x) if i != MUNI else findMapping(processString(x)) for i,x in enumerate(arr)]) \
-				.filter(lambda arr: arr[MUNI] in city_list and arr[TYPE] in airport_type_list) \
-				.collect()
+		.mapPartitions(lambda line: reader(line)) \
+		.map(lambda arr: [processString(x) if i != MUNI else findMapping(processString(x)) for i,x in enumerate(arr)]) \
+		.filter(lambda arr: arr[TYPE] in airport_type_list and arr[IDENT] != '' and arr[MUNI] != '' and arr[GST_CODE] != '') \
+		.map(lambda arr: [arr[IDENT], arr[TYPE], arr[MUNI], arr[GST_CODE]]) \
+		.collect()
 	return spark.createDataFrame(valid_data, schema)
 
-
-def getValidAirportCodes():
+def getAllAirportCodes():
 	airport_dataframe.registerTempTable('airport_df')
 	df1 = sqlContext.sql ( 
 			"""
-				SELECT DISTINCT ident
+				SELECT DISTINCT gst_code
 				FROM airport_df
 			"""
 	)
 	res = df1.collect()
-	return [x['ident'] for x in res]
+	return [x['gst_code'] for x in res]
+
+def getOnlyCityListAirportCodes():
+	airport_dataframe.registerTempTable('airport_df')
+	df1 = sqlContext.sql ("""
+		SELECT DISTINCT gst_code 
+		FROM airport_df 
+		WHERE municipality in """ + getSqlList(city_list))
+	res = df1.collect()
+	return [x['gst_code'] for x in res]
+
+def getCovidDataFrame(filename):
+	covid = sc.textFile(filename)
+	valid_data = covid \
+		.mapPartitions(lambda line: reader(line)) \
+		.map(lambda arr: [processString(x) if i != COUNTY else findMapping(processString(x)) for i,x in enumerate(arr)]) \
+		.filter(lambda arr: arr[COUNTY] in city_list and arr[0] >= '2020-03-01') \
+		.map(lambda arr: [arr[0], arr[1], arr[4], arr[5]]) \
+		.collect()
+	schema = ['date', 'county', 'cases', 'deaths']
+	return spark.createDataFrame(valid_data, schema)
 
 def getFlightDataFrame(filename):
 	flight = sc.textFile(filename)
@@ -70,7 +96,9 @@ def getFlightDataFrame(filename):
 				arr[ORIGIN] != '' and 
 				arr[DEST] != '' and 
 				arr[ORIGIN] != arr[DEST] and
-				(arr[ORIGIN] in airport_codes or arr[DEST] in airport_codes)
+				(arr[ORIGIN] in only_city_list_airport_codes or arr[DEST] in only_city_list_airport_codes) and
+				arr[ORIGIN] in all_airport_codes and 
+				arr[DEST] in all_airport_codes
 			)
 		) \
 		.map(lambda arr: [arr[ORIGIN], arr[DEST], arr[-1].split(' ')[0]]) \
@@ -82,5 +110,8 @@ city_mapper = getCityMapper('Datasets/map_list.csv')
 city_list = getCityList('Datasets/city_list.csv')
 airport_type_list = getAirportTypeListFor(['medium_airport','large_airport'])
 airport_dataframe = getAirportDataDFrame('Datasets/airports.csv')
-airport_codes = getValidAirportCodes()
+all_airport_codes = getAllAirportCodes()
+only_city_list_airport_codes = getOnlyCityListAirportCodes()
 flight_dataframe = getFlightDataFrame('Datasets/merged_flight.csv')
+covid_dataframe = getCovidDataFrame('Datasets/us-counties.csv')
+
