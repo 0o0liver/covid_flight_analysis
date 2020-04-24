@@ -1,12 +1,12 @@
-1. Download airports.csv, flightlist_20200301_20200331.csv and city_list.txt
-2. Put airports.csv to the distributed file system (hfs -put airports.csv)
-3. Put flightlist_20200301_20200331.csv to the distributed file system (hfs -put flightlist_20200301_20200331.csv)
-4. Run command "spark-submit --conf spark.pyspark.python=/share/apps/python/3.6.5/bin/python data_cleaning.py"
-5. Run command "hfs -getmerge airports_cleaned airports_cleaned.csv"
-6. Run command "hfs -put airports_cleaned.csv"
+1. Download airports.csv, flightlist_20200301_20200331.csv and city_list.txt ("flightlist_20200301_20200331.csv" can be downloaded from https://opensky-network.org/datasets/covid-19/)
+2. Put airports.csv to the distributed file system (```hfs -put airports.csv```)
+3. Put flightlist_20200301_20200331.csv to the distributed file system (```hfs -put flightlist_20200301_20200331.csv```)
+4. Run command ```spark-submit --conf spark.pyspark.python=/share/apps/python/3.6.5/bin/python data_cleaning.py```
+5. Run command ```hfs -getmerge airports_cleaned airports_cleaned.csv```
+6. Run command ```hfs -put airports_cleaned.csv```
 7. Add city name that you are interested in (one city name per line)
-8. Run command "spark-submit --conf spark.pyspark.python=/share/apps/python/3.6.5/bin/python build_dataset.py flightlist_20200301_20200331.csv city_list.txt"
-9. Run command "hfs -getmerge flightCount flightCount.csv"
+8. Run command ```spark-submit --conf spark.pyspark.python=/share/apps/python/3.6.5/bin/python build_dataset.py flightlist_20200301_20200331.csv city_list.txt```
+9. Run command ```hfs -getmerge flightCount flightCount.csv```
 
 Sample output:
 ```
