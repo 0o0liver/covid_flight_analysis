@@ -1,7 +1,15 @@
+from csv import reader
+
+MUNI = 10
+TYPE = 2
+
 def processString(input_string):
 	if input_string == None:
 		return input_string
 	return input_string.lstrip().rstrip().upper()
+
+def getAirportTypeListFor(temp_list):
+	return [processString(x) for x in temp_list]
 
 def getCityMapper(filename):
 	city_map = {}
@@ -28,5 +36,18 @@ def getCityList(filename):
 		.collect()
 	return city_list
 
+def getAirportDataDFrame(filename):
+	airport = sc.textFile(filename)
+	schema = airport.mapPartitions(lambda line: reader(line)).take(1)[0]
+	valid_data = airport \
+				.mapPartitions(lambda line: reader(line)) \
+				.map(lambda arr: [processString(x) if i != MUNI else findMapping(processString(x)) for i,x in enumerate(arr)]) \
+				.filter(lambda arr: arr[MUNI] in city_list and arr[TYPE] in airport_type_list) \
+				.collect()
+	return spark.createDataFrame(valid_data, schema)
+
 city_mapper = getCityMapper('Datasets/map_list.csv')
 city_list = getCityList('Datasets/city_list.csv')
+airport_type_list = getAirportTypeListFor(['medium_airport','large_airport'])
+aiport_dataframe = getAirportDataDFrame('Datasets/airports.csv')
+
