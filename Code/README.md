@@ -1,3 +1,8 @@
+# Initial Data Processing For Airport, Flight and Covid Dataset #
+
+**Currently the script is called rough_commands.py**
+**It runs fine. The name will be changed later**
+
 To run the script, we need to have the following data in the hpc:
 1. Datasets/us-counties.csv 
 2. Datasets/merged_flight.csv
