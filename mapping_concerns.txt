@@ -1,0 +1,4 @@
+1. No Washington D.C. in airport.csv (It is just Washington, so lets map it to Washington?)
+2. Is Dallas and Dallas-Fort Worth different (Existing in airport.csv)
+3. We have 4 municipalitites which reflect Chicago in airport.csv. Shall we consider all?
+4. Santa Clara and San Jose, both airports exist. What to do? 

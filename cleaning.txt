@@ -1,0 +1,12 @@
+Airport.csv
+1. Data is well formed
+2. No clustering found, municipalitites are named properly
+3. There are a few ~5000 blank municipalities. However, we are only considering medium and large airports. That too, only in US. Turns out, just 1 meduim_airport in US has a blank entry. Rest are perfect. (id = 313358) [However, that too is an abandoned aiport in Arizona]
+4. IN US, total 717 municipalities have large (170) and medium airport (687)
+
+
+us-counties.csv
+1. Airport New York, County : new York City
+
+flight:
+Avoid the entries with blank origin or destination
