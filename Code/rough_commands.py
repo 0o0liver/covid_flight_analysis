@@ -2,6 +2,8 @@ from csv import reader
 
 MUNI = 10
 TYPE = 2
+ORIGIN = 5
+DEST = 6
 
 def processString(input_string):
 	if input_string == None:
@@ -46,8 +48,39 @@ def getAirportDataDFrame(filename):
 				.collect()
 	return spark.createDataFrame(valid_data, schema)
 
+
+def getValidAirportCodes():
+	airport_dataframe.registerTempTable('airport_df')
+	df1 = sqlContext.sql ( 
+			"""
+				SELECT DISTINCT ident
+				FROM airport_df
+			"""
+	)
+	res = df1.collect()
+	return [x['ident'] for x in res]
+
+def getFlightDataFrame(filename):
+	flight = sc.textFile(filename)
+	valid_data = flight \
+		.mapPartitions(lambda line: reader(line)) \
+		.map(lambda arr: [processString(x) for x in arr]) \
+		.filter(lambda arr: (
+				arr[0] != 'CALLSIGN' and 
+				arr[ORIGIN] != '' and 
+				arr[DEST] != '' and 
+				arr[ORIGIN] != arr[DEST] and
+				(arr[ORIGIN] in airport_codes or arr[DEST] in airport_codes)
+			)
+		) \
+		.map(lambda arr: [arr[ORIGIN], arr[DEST], arr[-1].split(' ')[0]]) \
+		.collect()
+	schema = ['origin', 'destination', 'day']
+	return spark.createDataFrame(valid_data, schema)
+
 city_mapper = getCityMapper('Datasets/map_list.csv')
 city_list = getCityList('Datasets/city_list.csv')
 airport_type_list = getAirportTypeListFor(['medium_airport','large_airport'])
-aiport_dataframe = getAirportDataDFrame('Datasets/airports.csv')
-
+airport_dataframe = getAirportDataDFrame('Datasets/airports.csv')
+airport_codes = getValidAirportCodes()
+flight_dataframe = getFlightDataFrame('Datasets/merged_flight.csv')
