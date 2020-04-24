@@ -6,7 +6,10 @@
 	-> Miami-Dade: Miami
 	-> Cook: Chicago
 	-> Suffolk: Boston
-	-> Snohomish: Seattle
+	-> King: Seattle
 	-> Maricopa: Phoenix
+	-> Bexar: San Antonio
+	-> Salt Lake: Salt Lake City
+	-> Hillsborough: Tampa
 
 3. The output of this code is a single csv file contains four-column data, which are: city, date, cases and deaths. They are ordered by (city, date).
