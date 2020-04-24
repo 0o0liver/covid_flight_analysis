@@ -18,5 +18,4 @@ Davidson,Tennessee
 Wayne,Michigan
 Mecklenburg,North Carolina
 Harris,Texas
-Santa Clara,California
 Marion,Indiana
