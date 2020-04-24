@@ -1,0 +1,15 @@
+cat merged_flight.csv | head -1 > small_flight.csv
+cat merged_flight.csv | grep KJFK | grep "2020-03-31 00:00:00+00:00" | head -10 >> small_flight.csv
+cat merged_flight.csv | grep KSFO | grep "2020-03-30 00:00:00+00:00" | head -10 >> small_flight.csv
+cat merged_flight.csv | grep KLGA | grep "2020-03-29 00:00:00+00:00" | head -10 >> small_flight.csv 
+cat merged_flight.csv | grep KLGA | grep "2020-03-31 00:00:00+00:00" | head -10 >> small_flight.csv 
+
+1. It consists of total 40 records
+2. The record consist of flights over 3 days: 29, 30 and 31 st march
+3. It consists of airports: KSFO (San Fransisco), KJFK (New York), KLGA (New York)
+4. It consists of records which have same to and from codes
+5. It consists of records which have flights between KJFK and KSFO
+6. It consists of New York, which is one of the mapped cities
+7. It consists of records in which either origin or destination is missing
+
+I guess this dataset will help us test things in small amount of time.
