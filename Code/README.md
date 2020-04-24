@@ -14,6 +14,7 @@ The script:
 3. Filters the cities specified by the user in city_list.csv
 4. Currnetly, gives us the following datagrams at the end.
 
+```
 covid_dataframe:
 +----------+--------------+-----+------+
 |      date|        county|cases|deaths|
@@ -93,6 +94,7 @@ flight_dataframe:
 |  LFPG|       KLAX|2020-01-01|
 |  VHHH|       KLAX|2020-01-01|
 +------+-----------+----------+
+```
 
 Next Steps:
 1. Joining the datagrams to get the desired results
