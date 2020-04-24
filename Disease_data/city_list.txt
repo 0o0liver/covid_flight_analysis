@@ -6,7 +6,6 @@ Philadelphia,Pennsylvania
 District of Columbia,District of Columbia
 Dallas,Texas
 San Diego,California
-Miami-Dade,Florida
 Cook,Illinois
 Suffolk,Massachusetts
 King,Washington
@@ -14,4 +13,10 @@ Maricopa,Arizona
 Bexar,Texas
 Salt Lake,Utah
 Santa Clara,California
-Hillsborough,Florida
+Shelby,Tennessee
+Davidson,Tennessee
+Wayne,Michigan
+Mecklenburg,North Carolina
+Harris,Texas
+Santa Clara,California
+Marion,Indiana
