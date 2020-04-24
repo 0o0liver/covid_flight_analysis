@@ -106,6 +106,31 @@ def getFlightDataFrame(filename):
 	schema = ['origin', 'destination', 'day']
 	return spark.createDataFrame(valid_data, schema)
 
+def getInterCityFlightDataFrame():
+	covid_dataframe.registerTempTable('covid_df')
+	flight_dataframe.registerTempTable('flight_df')
+	airport_dataframe.registerTempTable('airport_df')
+	return sqlContext.sql(
+	"""
+		SELECT a1.municipality as from_city,
+		d.from_airport as from_airport,
+		d.to_city as to_city,
+		d.to_airport as to_airport,
+		d.day as day
+		FROM airport_df as a1
+		INNER JOIN (
+			SELECT f.origin as from_airport,
+			a2.municipality as to_city,
+			f.destination as to_airport,
+			f.day as day
+			FROM airport_df as a2
+			INNER JOIN flight_df as f
+			ON a2.ident = f.destination
+		) as d
+		ON a1.ident = d.from_airport
+	"""
+	)
+
 city_mapper = getCityMapper('Datasets/map_list.csv')
 city_list = getCityList('Datasets/city_list.csv')
 airport_type_list = getAirportTypeListFor(['medium_airport','large_airport'])
@@ -114,4 +139,5 @@ all_airport_codes = getAllAirportCodes()
 only_city_list_airport_codes = getOnlyCityListAirportCodes()
 flight_dataframe = getFlightDataFrame('Datasets/merged_flight.csv')
 covid_dataframe = getCovidDataFrame('Datasets/us-counties.csv')
+inter_city_flight_dataframe = getInterCityFlightDataFrame()
 
