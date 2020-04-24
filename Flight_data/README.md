@@ -6,7 +6,6 @@
 6. Run command ```hfs -put airports_cleaned.csv```
 7. Add city name that you are interested in (one city name per line)
 8. Run command ```spark-submit --conf spark.pyspark.python=/share/apps/python/3.6.5/bin/python build_dataset.py flightlist_20200301_20200331.csv city_list.txt```
-9. Run command ```hfs -getmerge flightCount flightCount.csv```
 
 Sample output:
 ```
