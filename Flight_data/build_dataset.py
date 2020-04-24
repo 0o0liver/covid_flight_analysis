@@ -26,5 +26,4 @@ if __name__ == "__main__":
 	# Join incoming and outgoing
 	result = Outgoing.join(Incoming, (Outgoing.municipality==Incoming.Imunicipality) & (Outgoing.day==Incoming.Iday)).drop(Incoming.Imunicipality).drop(Incoming.Iday).orderBy("municipality", "day")
 	result.show()
-	result.write.format("csv").option("header","true").save("flightCount")
-	
+	result.toPandas().to_csv("flightCount.csv", header=True, index=False)
