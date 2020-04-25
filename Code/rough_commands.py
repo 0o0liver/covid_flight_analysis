@@ -1,4 +1,8 @@
 from csv import reader
+from __future__ import print_function
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
+
 
 MUNI = 10
 TYPE = 2
@@ -198,6 +202,9 @@ def getCovidFlightCountDataFrame():
 		)
 	return df1
 
+def saveData(df, filename):
+	df.write.option("header","true").csv(filename)
+
 city_mapper = getCityMapper('Datasets/map_list.csv')
 city_list = getCityList('Datasets/city_list.csv')
 airport_type_list = getAirportTypeListFor(['medium_airport','large_airport'])
@@ -209,4 +216,7 @@ covid_dataframe = getCovidDataFrame('Datasets/disease.csv')
 inter_city_flight_dataframe = getInterCityFlightDataFrame()
 city_from_and_to_flight_counts_dataframe = getCityFromAndToFlightCountsDataFrame()
 covid_flight_count_dataframe = getCovidFlightCountDataFrame()
+
+saveData(inter_city_flight_dataframe, 'inter_city_flight_data.out')
+saveData(covid_flight_count_dataframe, 'covid_flight_count_data.out')
 

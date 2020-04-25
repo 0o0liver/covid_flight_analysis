@@ -21,30 +21,30 @@ The script:
 
 ```
 covid_dataframe:
-+----------+--------------+-----+------+
-|      date|        county|cases|deaths|
-+----------+--------------+-----+------+
-|2020-03-01|       PHOENIX|    1|     0|
-|2020-03-01|   LOS ANGELES|    1|     0|
-|2020-03-01|     SAN DIEGO|    1|     0|
-|2020-03-01| SAN FRANCISCO|    3|     0|
-|2020-03-01|      SAN JOSE|    7|     0|
-|2020-03-01|       CHICAGO|    3|     0|
-|2020-03-01|        BOSTON|    1|     0|
-|2020-03-01| NEW YORK CITY|    1|     0|
-|2020-03-01|    WASHINGTON|    2|     0|
-|2020-03-01|   SAN ANTONIO|   11|     0|
-|2020-03-01|SALT LAKE CITY|    1|     0|
-|2020-03-01|       SEATTLE|   11|     3|
-|2020-03-02|       PHOENIX|    1|     0|
-|2020-03-02|   LOS ANGELES|    1|     0|
-|2020-03-02|     SAN DIEGO|    1|     0|
-|2020-03-02| SAN FRANCISCO|    3|     0|
-|2020-03-02|      SAN JOSE|    9|     0|
-|2020-03-02|       CHICAGO|    4|     0|
-|2020-03-02|        BOSTON|    1|     0|
-|2020-03-02| NEW YORK CITY|    1|     0|
-+----------+--------------+-----+------+
++-----------+----------+-----+------+
+|       city|      date|cases|deaths|
++-----------+----------+-----+------+
+|SAN ANTONIO|2020-02-12|    1|     0|
+|SAN ANTONIO|2020-02-13|    2|     0|
+|SAN ANTONIO|2020-02-14|    2|     0|
+|SAN ANTONIO|2020-02-15|    2|     0|
+|SAN ANTONIO|2020-02-16|    2|     0|
+|SAN ANTONIO|2020-02-17|    2|     0|
+|SAN ANTONIO|2020-02-18|    2|     0|
+|SAN ANTONIO|2020-02-19|    2|     0|
+|SAN ANTONIO|2020-02-20|    2|     0|
+|SAN ANTONIO|2020-02-21|    4|     0|
+|SAN ANTONIO|2020-02-22|    4|     0|
+|SAN ANTONIO|2020-02-23|    4|     0|
+|SAN ANTONIO|2020-02-24|   10|     0|
+|SAN ANTONIO|2020-02-25|   10|     0|
+|SAN ANTONIO|2020-02-26|   10|     0|
+|SAN ANTONIO|2020-02-27|   10|     0|
+|SAN ANTONIO|2020-02-28|   11|     0|
+|SAN ANTONIO|2020-02-29|   11|     0|
+|SAN ANTONIO|2020-03-01|   11|     0|
+|SAN ANTONIO|2020-03-02|   11|     0|
++-----------+----------+-----+------+
 
 airport_dataframe:
 +-------+--------------+--------------+
@@ -143,6 +143,21 @@ city_from_and_to_flight_counts_dataframe on small_flight.csv dataset:
 |  LOS ANGELES|2020-03-31|                    1|                    1|
 +-------------+----------+---------------------+---------------------+
 
+Flight and Covid daily count on small_flight.csv:
++-------------+----------+-----+------+---------------------+---------------------+
+|         city|       day|cases|deaths|incoming_flight_count|outgoing_flight_count|
++-------------+----------+-----+------+---------------------+---------------------+
+|  LOS ANGELES|2020-03-31| 3011|    54|                    1|                    1|
+|NEW YORK CITY|2020-03-29|33768|   776|                    1|                    6|
+|NEW YORK CITY|2020-03-30|38087|   914|                    1|                    1|
+|NEW YORK CITY|2020-03-31|43139|  1096|                    5|                   14|
+|SAN FRANCISCO|2020-03-30|  374|     6|                    5|                    4|
+|SAN FRANCISCO|2020-03-31|  400|     6|                    1|                    1|
+|   WASHINGTON|2020-03-30|  401|     9|                    1|                    1|
++-------------+----------+-----+------+---------------------+---------------------+
+
+
+
 city_from_and_to_flight_counts_dataframe on merged_flight.csv dataset:
 +--------------+----------+---------------------+---------------------+         
 |          city|       day|incoming_flight_count|outgoing_flight_count|
@@ -171,7 +186,7 @@ city_from_and_to_flight_counts_dataframe on merged_flight.csv dataset:
 
 Total Count = 1782 rows
 
-Flight and Covid daily count:
+Flight and Covid daily count on merged_flight.csv:
 +------+----------+-----+------+---------------------+---------------------+    
 |  city|       day|cases|deaths|incoming_flight_count|outgoing_flight_count|
 +------+----------+-----+------+---------------------+---------------------+
