@@ -1,5 +1,5 @@
 # Explanation and Generation of datasets
-## Disease.csv:
+## disease.csv:
 This dataset contains four columns: *city*, *date*, *cases* and *deaths* and you can find this dataset from [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Disease_data) <br>
 * City: In order to make more precise analysis, we need to find the cities with large populations and big amounts of flights per day. So, we chose these cities from the top 25 largest cities around the US. City list can be found inside ```city_list.txt``` where each line represents “*city*, *state*”.
 * Date: Given the very first case of the US appears in January and only less than 10 cities have the first case before March, so we will mainly consider the epidemic situation for March and April. However, the generated dataset still includes lines of data for January and February.
@@ -24,7 +24,7 @@ This dataset contains information of every flight during the first three months 
 * Destination: ICAO 4-characters code of the destination airport.
 * Day: Date of each flight.
 
-To generate this dataset from raw csv files, please follow the instructions below.
+Due to the large size of this file, we are not able to upload it to this repo, therefore, instructions on how to generate ```merged_flight.csv``` is provided below:
 1. Download file ```flight_dataset_urls.txt``` from the repo and place it to the desired directory in the HPC vm.
 2. Run command ```cat flight_dataset_urls.txt | xargs -n 1 -P 8 wget -c -P flight/``` to download three individual zipped dataset files to the flight directory.
 3. Navigate to flight directory using ```cd flight```.
