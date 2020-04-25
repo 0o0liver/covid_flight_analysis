@@ -5,7 +5,6 @@ TYPE = 2
 ORIGIN = 5
 DEST = 6
 IDENT = 1 #ident
-GST_CODE = 12
 CITY_INDEX = 0
 
 def processString(input_string):
@@ -46,12 +45,12 @@ def getCityList(filename):
 
 def getAirportDataDFrame(filename):
 	airport = sc.textFile(filename)
-	schema = ['ident','type','municipality','gst_code']
+	schema = ['ident','type','municipality']
 	valid_data = airport \
 		.mapPartitions(lambda line: reader(line)) \
 		.map(lambda arr: [processString(x) if i != MUNI else findMapping(processString(x)) for i,x in enumerate(arr)]) \
-		.filter(lambda arr: arr[TYPE] in airport_type_list and arr[IDENT] != '' and arr[MUNI] != '' and arr[GST_CODE] != '') \
-		.map(lambda arr: [arr[IDENT], arr[TYPE], arr[MUNI], arr[GST_CODE]]) \
+		.filter(lambda arr: arr[TYPE] in airport_type_list and arr[IDENT] != '' and arr[MUNI] != '' ) \
+		.map(lambda arr: [arr[IDENT], arr[TYPE], arr[MUNI]]) \
 		.collect()
 	return spark.createDataFrame(valid_data, schema)
 
@@ -59,21 +58,21 @@ def getAllAirportCodes():
 	airport_dataframe.registerTempTable('airport_df')
 	df1 = sqlContext.sql ( 
 			"""
-				SELECT DISTINCT gst_code
+				SELECT DISTINCT ident
 				FROM airport_df
 			"""
 	)
 	res = df1.collect()
-	return [x['gst_code'] for x in res]
+	return [x['ident'] for x in res]
 
 def getOnlyCityListAirportCodes():
 	airport_dataframe.registerTempTable('airport_df')
 	df1 = sqlContext.sql ("""
-		SELECT DISTINCT gst_code 
+		SELECT DISTINCT ident 
 		FROM airport_df 
 		WHERE municipality in """ + getSqlList(city_list))
 	res = df1.collect()
-	return [x['gst_code'] for x in res]
+	return [x['ident'] for x in res]
 
 def getCovidDataFrame(filename):
 	covid = sc.textFile(filename)

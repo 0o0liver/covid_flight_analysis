@@ -47,30 +47,30 @@ covid_dataframe:
 +----------+--------------+-----+------+
 
 airport_dataframe:
-+-----+--------------+--------------+--------+
-|ident|          type|  municipality|gst_code|
-+-----+--------------+--------------+--------+
-|  5A8|MEDIUM_AIRPORT|     ALEKNAGIK|     5A8|
-| AGGH|MEDIUM_AIRPORT|       HONIARA|    AGGH|
-|  AHJ|MEDIUM_AIRPORT|           ABA|    ZUHY|
-| ANYN|MEDIUM_AIRPORT|YAREN DISTRICT|    ANYN|
-|  AXF|MEDIUM_AIRPORT|      BAYANHOT|    ZBAL|
-| AYBK|MEDIUM_AIRPORT|   BUKA ISLAND|    AYBK|
-| AYCH|MEDIUM_AIRPORT|      KUNDIAWA|    AYCH|
-| AYDU|MEDIUM_AIRPORT|          DARU|    AYDU|
-| AYGA|MEDIUM_AIRPORT|       GORONKA|    AYGA|
-| AYGN|MEDIUM_AIRPORT|        GURNEY|    AYGN|
-| AYGR|MEDIUM_AIRPORT|    POPONDETTA|    AYGR|
-| AYHK|MEDIUM_AIRPORT|       HOSKINS|    AYHK|
-| AYKM|MEDIUM_AIRPORT|        KEREMA|    AYKM|
-| AYKV|MEDIUM_AIRPORT|       KAVIENG|    AYKV|
-| AYMD|MEDIUM_AIRPORT|        MADANG|    AYMD|
-| AYMH|MEDIUM_AIRPORT|   MOUNT HAGEN|    AYMH|
-| AYMN|MEDIUM_AIRPORT|         MENDI|    AYMN|
-| AYMO|MEDIUM_AIRPORT|  MANUS ISLAND|    AYMO|
-| AYNZ|MEDIUM_AIRPORT|           LAE|    AYNZ|
-| AYPY| LARGE_AIRPORT|  PORT MORESBY|    AYPY|
-+-----+--------------+--------------+--------+
++-------+--------------+--------------+
+|  ident|          type|  municipality|
++-------+--------------+--------------+
+|    5A8|MEDIUM_AIRPORT|     ALEKNAGIK|
+|AF-0005|MEDIUM_AIRPORT|         KHOST|
+|   AGGH|MEDIUM_AIRPORT|       HONIARA|
+|    AHJ|MEDIUM_AIRPORT|           ABA|
+|   ANYN|MEDIUM_AIRPORT|YAREN DISTRICT|
+|AU-0121|MEDIUM_AIRPORT|        KILCOY|
+|    AXF|MEDIUM_AIRPORT|      BAYANHOT|
+|   AYBK|MEDIUM_AIRPORT|   BUKA ISLAND|
+|   AYCH|MEDIUM_AIRPORT|      KUNDIAWA|
+|   AYDU|MEDIUM_AIRPORT|          DARU|
+|   AYGA|MEDIUM_AIRPORT|       GORONKA|
+|   AYGN|MEDIUM_AIRPORT|        GURNEY|
+|   AYGR|MEDIUM_AIRPORT|    POPONDETTA|
+|   AYHK|MEDIUM_AIRPORT|       HOSKINS|
+|   AYKM|MEDIUM_AIRPORT|        KEREMA|
+|   AYKV|MEDIUM_AIRPORT|       KAVIENG|
+|   AYMD|MEDIUM_AIRPORT|        MADANG|
+|   AYMH|MEDIUM_AIRPORT|   MOUNT HAGEN|
+|   AYMN|MEDIUM_AIRPORT|         MENDI|
+|   AYMO|MEDIUM_AIRPORT|  MANUS ISLAND|
++-------+--------------+--------------+
 
 
 
@@ -99,32 +99,33 @@ flight_dataframe:
 |  LFPG|       KLAX|2020-01-01|
 |  VHHH|       KLAX|2020-01-01|
 +------+-----------+----------+
+Total count: 887595
 
 inter_city_flight_dataframe output:
-+--------------------+------------+-------------+----------+----------+         
-|           from_city|from_airport|      to_city|to_airport|       day|
-+--------------------+------------+-------------+----------+----------+
-|              LONDON|        EGLL|NEW YORK CITY|      KJFK|2020-03-31|
-|              LONDON|        EGLL|SAN FRANCISCO|      KSFO|2020-03-30|
-|FAYETTEVILLE/SPRI...|        KXNA|NEW YORK CITY|      KLGA|2020-03-31|
-|          WASHINGTON|        KIAD|SAN FRANCISCO|      KSFO|2020-03-30|
-|          FORT MYERS|        KRSW|NEW YORK CITY|      KLGA|2020-03-29|
-|             MADISON|        KMSN|SAN FRANCISCO|      KSFO|2020-03-30|
-|       NEW YORK CITY|        KJFK|    SAN DIEGO|      KSAN|2020-03-31|
-|       NEW YORK CITY|        KJFK|        TOKYO|      RJTT|2020-03-31|
-|       NEW YORK CITY|        KJFK|        SEOUL|      RKSI|2020-03-31|
-|       NEW YORK CITY|        KJFK|  LOS ANGELES|      KLAX|2020-03-31|
-|       NEW YORK CITY|        KJFK|      PHOENIX|      KPHX|2020-03-31|
-|       NEW YORK CITY|        KJFK|SAN FRANCISCO|      KSFO|2020-03-31|
-|       NEW YORK CITY|        KJFK|SAN FRANCISCO|      KSFO|2020-03-30|
-|              NEWARK|        KEWR|SAN FRANCISCO|      KSFO|2020-03-30|
-|       NEW YORK CITY|        KLGA|    CLEVELAND|      KCLE|2020-03-29|
-|       NEW YORK CITY|        KLGA|  KANSAS CITY|      KMCI|2020-03-31|
-|       NEW YORK CITY|        KLGA|      DETROIT|      KDTW|2020-03-29|
-|       NEW YORK CITY|        KLGA|     ST LOUIS|      KSTL|2020-03-31|
-|       NEW YORK CITY|        KLGA|    KNOXVILLE|      KTYS|2020-03-31|
-|       NEW YORK CITY|        KLGA|  MINNEAPOLIS|      KMSP|2020-03-29|
-+--------------------+------------+-------------+----------+----------+
++--------------------+------------+---------+----------+----------+             
+|           from_city|from_airport|  to_city|to_airport|       day|
++--------------------+------------+---------+----------+----------+
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-02-15|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-02-17|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-02-21|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-02-21|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-02-25|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-02-26|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-02-29|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-05|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-07|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-11|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-12|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-15|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-15|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-18|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-19|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-20|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-20|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-21|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-23|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-03-24|
++--------------------+------------+---------+----------+----------+
 
 
 
@@ -148,22 +149,22 @@ city_from_and_to_flight_counts_dataframe on merged_flight.csv dataset:
 +--------------+----------+---------------------+---------------------+
 |   LOS ANGELES|2020-01-01|                  516|                  543|
 |       CHICAGO|2020-01-01|                  755|                  696|
-|       SEATTLE|2020-01-01|                  370|                  380|
-|  INDIANAPOLIS|2020-01-01|                  117|                  105|
-|     SAN DIEGO|2020-01-01|                  204|                  203|
-|   SAN ANTONIO|2020-01-01|                   66|                   83|
-|       DETROIT|2020-01-01|                  252|                   23|
-|        BOSTON|2020-01-01|                  312|                  299|
 |       HOUSTON|2020-01-01|                  395|                  374|
+|  INDIANAPOLIS|2020-01-01|                  117|                  105|
+|    WASHINGTON|2020-01-01|                  343|                  291|
+|   SAN ANTONIO|2020-01-01|                   66|                   83|
+|        BOSTON|2020-01-01|                  312|                  299|
+|       SEATTLE|2020-01-01|                  370|                  380|
 |        DALLAS|2020-01-01|                  140|                  127|
 |        DENVER|2020-01-01|                  126|                  429|
-|    WASHINGTON|2020-01-01|                  343|                  291|
 |     NASHVILLE|2020-01-01|                  154|                  145|
-|  PHILADELPHIA|2020-01-01|                  227|                  220|
 |SALT LAKE CITY|2020-01-01|                   76|                   30|
+|     SAN DIEGO|2020-01-01|                  204|                  203|
+|  PHILADELPHIA|2020-01-01|                  227|                  220|
+|       DETROIT|2020-01-01|                  252|                   23|
 |      SAN JOSE|2020-01-01|                  183|                  181|
-|       PHOENIX|2020-01-01|                  411|                  373|
 | SAN FRANCISCO|2020-01-01|                  381|                  367|
+|       PHOENIX|2020-01-01|                  411|                  373|
 |     CHARLOTTE|2020-01-01|                  130|                  328|
 | NEW YORK CITY|2020-01-01|                  537|                  524|
 +--------------+----------+---------------------+---------------------+
