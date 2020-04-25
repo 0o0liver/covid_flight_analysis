@@ -167,6 +167,25 @@ def getCityFromAndToFlightCountsDataFrame():
 	)
 	return df3
 
+def getCovidFlightCountDataFrame():
+	covid_dataframe.registerTempTable('covid_count_df')
+	city_from_and_to_flight_counts_dataframe.registerTempTable('flight_count_df')
+	df1 = sqlContext.sql(
+		"""
+		SELECT 
+			cc.city as city,
+			cc.date as day,
+			cc.cases as cases,
+			cc.deaths as deaths,
+			fc.incoming_flight_count as incoming_flight_count,
+			fc.outgoing_flight_count as outgoing_flight_count
+		FROM covid_count_df as cc
+		INNER JOIN flight_count_df as fc
+		ON cc.city = fc.city and cc.date = fc.day
+		ORDER BY cc.city, cc.date
+		"""
+		)
+	return df1
 
 city_mapper = getCityMapper('Datasets/map_list.csv')
 city_list = getCityList('Datasets/city_list.csv')
@@ -178,3 +197,5 @@ flight_dataframe = getFlightDataFrame('Datasets/merged_flight.csv')
 covid_dataframe = getCovidDataFrame('Datasets/disease.csv')
 inter_city_flight_dataframe = getInterCityFlightDataFrame()
 city_from_and_to_flight_counts_dataframe = getCityFromAndToFlightCountsDataFrame()
+covid_flight_count_dataframe = getCovidFlightCountDataFrame()
+
