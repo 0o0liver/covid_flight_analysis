@@ -1,6 +1,6 @@
 # Initial Data Processing For Airport, Flight and Covid Dataset #
 
-**Currently the script is called rough_commands.py**
+**Currently the script is called rough_commands.py** 
 **It runs fine. The name will be changed later**
 
 To run the script, we need to have the following data in the hpc:
@@ -99,6 +99,77 @@ flight_dataframe:
 |  LFPG|       KLAX|2020-01-01|
 |  VHHH|       KLAX|2020-01-01|
 +------+-----------+----------+
+
+inter_city_flight_dataframe output:
++--------------------+------------+-------------+----------+----------+         
+|           from_city|from_airport|      to_city|to_airport|       day|
++--------------------+------------+-------------+----------+----------+
+|              LONDON|        EGLL|NEW YORK CITY|      KJFK|2020-03-31|
+|              LONDON|        EGLL|SAN FRANCISCO|      KSFO|2020-03-30|
+|FAYETTEVILLE/SPRI...|        KXNA|NEW YORK CITY|      KLGA|2020-03-31|
+|          WASHINGTON|        KIAD|SAN FRANCISCO|      KSFO|2020-03-30|
+|          FORT MYERS|        KRSW|NEW YORK CITY|      KLGA|2020-03-29|
+|             MADISON|        KMSN|SAN FRANCISCO|      KSFO|2020-03-30|
+|       NEW YORK CITY|        KJFK|    SAN DIEGO|      KSAN|2020-03-31|
+|       NEW YORK CITY|        KJFK|        TOKYO|      RJTT|2020-03-31|
+|       NEW YORK CITY|        KJFK|        SEOUL|      RKSI|2020-03-31|
+|       NEW YORK CITY|        KJFK|  LOS ANGELES|      KLAX|2020-03-31|
+|       NEW YORK CITY|        KJFK|      PHOENIX|      KPHX|2020-03-31|
+|       NEW YORK CITY|        KJFK|SAN FRANCISCO|      KSFO|2020-03-31|
+|       NEW YORK CITY|        KJFK|SAN FRANCISCO|      KSFO|2020-03-30|
+|              NEWARK|        KEWR|SAN FRANCISCO|      KSFO|2020-03-30|
+|       NEW YORK CITY|        KLGA|    CLEVELAND|      KCLE|2020-03-29|
+|       NEW YORK CITY|        KLGA|  KANSAS CITY|      KMCI|2020-03-31|
+|       NEW YORK CITY|        KLGA|      DETROIT|      KDTW|2020-03-29|
+|       NEW YORK CITY|        KLGA|     ST LOUIS|      KSTL|2020-03-31|
+|       NEW YORK CITY|        KLGA|    KNOXVILLE|      KTYS|2020-03-31|
+|       NEW YORK CITY|        KLGA|  MINNEAPOLIS|      KMSP|2020-03-29|
++--------------------+------------+-------------+----------+----------+
+
+
+
+
+city_from_and_to_flight_counts_dataframe on small_flight.csv dataset:
++-------------+----------+---------------------+---------------------+          
+|         city|       day|incoming_flight_count|outgoing_flight_count|
++-------------+----------+---------------------+---------------------+
+|NEW YORK CITY|2020-03-29|                    1|                    6|
+|   WASHINGTON|2020-03-30|                    1|                    1|
+|NEW YORK CITY|2020-03-30|                    1|                    1|
+|SAN FRANCISCO|2020-03-30|                    5|                    4|
+|NEW YORK CITY|2020-03-31|                    5|                   14|
+|SAN FRANCISCO|2020-03-31|                    1|                    1|
+|  LOS ANGELES|2020-03-31|                    1|                    1|
++-------------+----------+---------------------+---------------------+
+
+city_from_and_to_flight_counts_dataframe on merged_flight.csv dataset:
++--------------+----------+---------------------+---------------------+         
+|          city|       day|incoming_flight_count|outgoing_flight_count|
++--------------+----------+---------------------+---------------------+
+|   LOS ANGELES|2020-01-01|                  516|                  543|
+|       CHICAGO|2020-01-01|                  755|                  696|
+|       SEATTLE|2020-01-01|                  370|                  380|
+|  INDIANAPOLIS|2020-01-01|                  117|                  105|
+|     SAN DIEGO|2020-01-01|                  204|                  203|
+|   SAN ANTONIO|2020-01-01|                   66|                   83|
+|       DETROIT|2020-01-01|                  252|                   23|
+|        BOSTON|2020-01-01|                  312|                  299|
+|       HOUSTON|2020-01-01|                  395|                  374|
+|        DALLAS|2020-01-01|                  140|                  127|
+|        DENVER|2020-01-01|                  126|                  429|
+|    WASHINGTON|2020-01-01|                  343|                  291|
+|     NASHVILLE|2020-01-01|                  154|                  145|
+|  PHILADELPHIA|2020-01-01|                  227|                  220|
+|SALT LAKE CITY|2020-01-01|                   76|                   30|
+|      SAN JOSE|2020-01-01|                  183|                  181|
+|       PHOENIX|2020-01-01|                  411|                  373|
+| SAN FRANCISCO|2020-01-01|                  381|                  367|
+|     CHARLOTTE|2020-01-01|                  130|                  328|
+| NEW YORK CITY|2020-01-01|                  537|                  524|
++--------------+----------+---------------------+---------------------+
+
+Total Count = 1782 rows
+
 ```
 
 Next Steps:

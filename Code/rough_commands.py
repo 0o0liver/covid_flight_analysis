@@ -119,10 +119,11 @@ def getInterCityFlightDataFrame():
 		d.day as day
 		FROM airport_df as a1
 		INNER JOIN (
-			SELECT f.origin as from_airport,
-			a2.municipality as to_city,
-			f.destination as to_airport,
-			f.day as day
+			SELECT 
+				f.origin as from_airport,
+				a2.municipality as to_city,
+				f.destination as to_airport,
+				f.day as day
 			FROM airport_df as a2
 			INNER JOIN flight_df as f
 			ON a2.ident = f.destination
@@ -130,6 +131,45 @@ def getInterCityFlightDataFrame():
 		ON a1.ident = d.from_airport
 	"""
 	)
+
+def getCityFromAndToFlightCountsDataFrame():
+	inter_city_flight_dataframe.registerTempTable('inter_city_flight_df')
+	df1 = sqlContext.sql(
+			"""
+			SELECT 
+				from_city as city,
+				day as day,
+				COUNT(*) as outgoing_flight_count
+			FROM inter_city_flight_df
+			GROUP BY from_city, day
+			"""
+		)
+	df2 = sqlContext.sql(
+			"""
+			SELECT 
+				to_city as city,
+				day as day,
+				COUNT(*) as incoming_flight_count
+			FROM inter_city_flight_df
+			GROUP BY to_city, day
+			"""
+		)
+	df1.registerTempTable('df1')
+	df2.registerTempTable('df2')
+	df3 = sqlContext.sql(
+		"""
+		SELECT 
+			df1.city as city,
+			df1.day as day,
+			df2.incoming_flight_count as incoming_flight_count,
+			df1.outgoing_flight_count as outgoing_flight_count
+		FROM df1
+		INNER JOIN df2
+		ON df1.city = df2.city and df1.day = df2.day
+		WHERE df1.city IN """ +getSqlList(city_list) + """ORDER BY df1.day"""
+	)
+	return df3
+
 
 city_mapper = getCityMapper('Datasets/map_list.csv')
 city_list = getCityList('Datasets/city_list.csv')
@@ -140,4 +180,4 @@ only_city_list_airport_codes = getOnlyCityListAirportCodes()
 flight_dataframe = getFlightDataFrame('Datasets/merged_flight.csv')
 covid_dataframe = getCovidDataFrame('Datasets/us-counties.csv')
 inter_city_flight_dataframe = getInterCityFlightDataFrame()
-
+city_from_and_to_flight_counts_dataframe = getCityFromAndToFlightCountsDataFrame()
