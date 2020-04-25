@@ -33,3 +33,11 @@ To generate this dataset from raw csv files, please follow the instructions belo
 6. Run command ```hfs -put flight``` to upload flight directory to the distributed file system.
 7. Run command ```hfs -getmerge flight flight.csv``` to merge three individual dataset files to one file and download it (```flight.csv``` will have two extra header lines because ```-getmerge``` command performs plain concatenation of files, step 8 takes care of this issue).
 8. Run command ```awk 'BEGIN{f=""}{if($0!=f){print $0}if(NR==1){f=$0}}' flight.csv > merged_flight.csv``` to get rid of the two extra header lines
+
+## airports.csv
+This dataset contains information of every airport in the world, this dataset is provided by [OurAirports](https://ourairports.com/) and can be downloaded [here](https://ourairports.com/data/airports.csv). This dataset has 18 columns of information for each airport, we only utilized 4 of the 18, they are *ident*, *type*, *name* and *municipality*.
+* Ident: ICAO 4-characters code of airports
+* Type: Type of airports, for the scope of this project, we only care about “large_airport” and “medium_airport”.
+* Name: Name of airports
+* Municipality: Name of the city that each airport is located. 
+
