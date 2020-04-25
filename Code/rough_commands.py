@@ -6,7 +6,7 @@ ORIGIN = 5
 DEST = 6
 IDENT = 1 #ident
 GST_CODE = 12
-COUNTY = 1
+CITY_INDEX = 0
 
 def processString(input_string):
 	if input_string == None:
@@ -79,11 +79,10 @@ def getCovidDataFrame(filename):
 	covid = sc.textFile(filename)
 	valid_data = covid \
 		.mapPartitions(lambda line: reader(line)) \
-		.map(lambda arr: [processString(x) if i != COUNTY else findMapping(processString(x)) for i,x in enumerate(arr)]) \
-		.filter(lambda arr: arr[COUNTY] in city_list and arr[0] >= '2020-03-01') \
-		.map(lambda arr: [arr[0], arr[1], arr[4], arr[5]]) \
+		.map(lambda arr: [processString(x) if i != CITY_INDEX else findMapping(processString(x)) for i,x in enumerate(arr)]) \
+		.filter(lambda arr: arr[CITY_INDEX] in city_list) \
 		.collect()
-	schema = ['date', 'county', 'cases', 'deaths']
+	schema = ['city', 'date', 'cases', 'deaths']
 	return spark.createDataFrame(valid_data, schema)
 
 def getFlightDataFrame(filename):
@@ -107,7 +106,6 @@ def getFlightDataFrame(filename):
 	return spark.createDataFrame(valid_data, schema)
 
 def getInterCityFlightDataFrame():
-	covid_dataframe.registerTempTable('covid_df')
 	flight_dataframe.registerTempTable('flight_df')
 	airport_dataframe.registerTempTable('airport_df')
 	return sqlContext.sql(
@@ -166,7 +164,7 @@ def getCityFromAndToFlightCountsDataFrame():
 		FROM df1
 		INNER JOIN df2
 		ON df1.city = df2.city and df1.day = df2.day
-		WHERE df1.city IN """ +getSqlList(city_list) + """ORDER BY df1.day"""
+		WHERE df1.city IN """ +getSqlList(city_list) + """ ORDER BY df1.day"""
 	)
 	return df3
 
@@ -178,6 +176,6 @@ airport_dataframe = getAirportDataDFrame('Datasets/airports.csv')
 all_airport_codes = getAllAirportCodes()
 only_city_list_airport_codes = getOnlyCityListAirportCodes()
 flight_dataframe = getFlightDataFrame('Datasets/merged_flight.csv')
-covid_dataframe = getCovidDataFrame('Datasets/us-counties.csv')
+covid_dataframe = getCovidDataFrame('Datasets/disease.csv')
 inter_city_flight_dataframe = getInterCityFlightDataFrame()
 city_from_and_to_flight_counts_dataframe = getCityFromAndToFlightCountsDataFrame()
