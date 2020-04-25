@@ -85,24 +85,35 @@ def getCovidDataFrame(filename):
 	return spark.createDataFrame(valid_data, schema)
 
 def getFlightDataFrame(filename):
-	flight = sc.textFile(filename)
-	valid_data = flight \
-		.mapPartitions(lambda line: reader(line)) \
-		.map(lambda arr: [processString(x) for x in arr]) \
-		.filter(lambda arr: (
-				arr[0] != 'CALLSIGN' and 
-				arr[ORIGIN] != '' and 
-				arr[DEST] != '' and 
-				arr[ORIGIN] != arr[DEST] and
-				(arr[ORIGIN] in only_city_list_airport_codes or arr[DEST] in only_city_list_airport_codes) and
-				arr[ORIGIN] in all_airport_codes and 
-				arr[DEST] in all_airport_codes
+	df1 = spark.read.csv(filename, header='true')
+	df1.registerTempTable('df1')
+	df1 = sqlContext.sql(
+			"""
+			SELECT * 
+			FROM
+			(
+				SELECT 
+				UPPER(TRIM(origin)) as origin,
+				UPPER(TRIM(destination)) as destination,
+				UPPER(TRIM(SUBSTRING(day,1,10))) as day
+				FROM df1
+			) as res
+			WHERE 
+			(
+				res.origin != '' and 
+				res.destination != '' and
+				res.origin != res.destination and
+				(res.origin in {only_selectected_city_air_codes:} 
+					or res.destination in {only_selectected_city_air_codes:}) and
+				res.origin in {all_city_air_codes:} and
+				res.destination in {all_city_air_codes:}
 			)
-		) \
-		.map(lambda arr: [arr[ORIGIN], arr[DEST], arr[-1].split(' ')[0]]) \
-		.collect()
-	schema = ['origin', 'destination', 'day']
-	return spark.createDataFrame(valid_data, schema)
+			""".format(
+				only_selectected_city_air_codes = getSqlList(only_city_list_airport_codes),
+				all_city_air_codes = getSqlList(all_airport_codes)
+				)
+		)
+	return df1
 
 def getInterCityFlightDataFrame():
 	flight_dataframe.registerTempTable('flight_df')
