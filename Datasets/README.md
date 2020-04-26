@@ -11,6 +11,7 @@ Here is some instructions to output one csv file we want:
 1. Under the same folder named “*Disease_data*”, download every file.
 2. Run "*construct.py*" by ```python construct.py 'str'```, where ```str``` can be replaced by the months you are interested in. If you want every month from the beginning of the spread of the epidemic, ```str``` should be ```01,02,03,04```; while ```03``` for only March.
 3. Then, there will be a csv file outputted. Four columns are ordered by city and date.
+4. Upload ```disease.csv``` on hfs
 
 Supplementary instructions:
 1. When we extract data from the source data webpage, the reason for considering both city and state is some cities appear in more than one state. So, we want the program to know the real city we want.
@@ -33,9 +34,10 @@ Due to the large size of this file, we are not able to upload it to this repo, t
 6. Run command ```hfs -put flight``` to upload flight directory to the distributed file system.
 7. Run command ```hfs -getmerge flight flight.csv``` to merge three individual dataset files to one file and download it (```flight.csv``` will have two extra header lines because ```-getmerge``` command performs plain concatenation of files, step 8 takes care of this issue).
 8. Run command ```awk 'BEGIN{f=""}{if($0!=f){print $0}if(NR==1){f=$0}}' flight.csv > merged_flight.csv``` to get rid of the two extra header lines
+9. Upload ```merged_flight.csv``` on hfs.
 
 ## airports.csv
-This dataset contains information of every airport in the world, this dataset is provided by [OurAirports](https://ourairports.com/) and can be downloaded [here](https://ourairports.com/data/airports.csv). This dataset has 18 columns of information for each airport, we only utilized 4 of the 18, they are *ident*, *type*, *name* and *municipality*.
+This dataset contains information of every airport in the world, this dataset is provided by [OurAirports](https://ourairports.com/) and can be downloaded [here](https://ourairports.com/data/airports.csv). This dataset has 18 columns of information for each airport, we only utilized 4 of the 18, they are *ident*, *type*, *name* and *municipality*. Please upload ```airports.csv``` on hfs.
 * Ident: ICAO 4-characters code of airports
 * Type: Type of airports, for the scope of this project, we only care about “large_airport” and “medium_airport”.
 * Name: Name of airports
