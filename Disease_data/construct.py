@@ -15,7 +15,7 @@ rows = [row for row in csvReader]
 months = sys.argv[1].split(',')
 
 ## Cities users want
-f = open('city_list.txt', 'r')
+f = open('city_list.csv', 'r')
 lines = f.readlines()
 for i in range(len(lines)):
 	lines[i] = lines[i].strip('\n')
