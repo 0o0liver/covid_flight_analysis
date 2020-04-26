@@ -12,7 +12,7 @@ Here is some instructions to output one csv file we want:
 2. Run "*construct.py*" by ```python construct.py 'str'```, where ```str``` can be replaced by the months you are interested in. If you want every month from the beginning of the spread of the epidemic, ```str``` should be ```01,02,03,04```; while ```03``` for only March.
 3. Then, there will be a csv file outputted. Four columns are ordered by city and date.
 
-Something supplementary instruction:
+Supplementary instructions:
 1. When we extract data from the source data webpage, the reason for considering both city and state is some cities appear in more than one state. So, we want the program to know the real city we want.
 2. Some cities are not exactly what we know before, for example: Cook should be Chicago, Suffolk should be Boston. This issue results from the format of the data source, where they collect data in terms of county rather than city. To fix this, users can find the mapping relationship for city and county inside README.
 3. If you want to add more cities into city_list.csv, please follow the same format and look up for the county that the city is inside.
