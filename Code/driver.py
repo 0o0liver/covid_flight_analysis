@@ -231,6 +231,7 @@ if __name__ == "__main__":
 	print('merged_flight_dataset_path: ' + merged_flight_dataset_path)
 	print('covid_disease_dataset_path: ' + covid_disease_dataset_path)
 
+	print('Processing has started. It will take 5 to 10 minutes from the start time ......')
 	city_mapper = getCityMapper(map_list_path)
 	city_list = getCityList(city_list_path)
 	airport_type_list = getAirportTypeListFor(['medium_airport','large_airport'])
