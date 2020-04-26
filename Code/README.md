@@ -17,6 +17,7 @@ Dataset looks like:
 
 2. `covid_flight_count_data.csv` : For every city, this dataset, records the daily count of COVID cases/deaths and number of flights flying to and fro from that city on that particular day. 
 Dataset looks like:
+
 ```
 Flight and Covid daily count on merged_flight.csv:
 +------+----------+-----+------+---------------------+---------------------+    
@@ -48,17 +49,18 @@ The **input** of the script will be the **5 initial datasets i.e. disease.csv, a
 
 The **output** of the script will be 2 dataset folders which will  be saved by the script on hfs. The datasets will be called **inter_city_flight_data.out** and **covid_flight_count_data.out**.
 
-
 **We need to follow the given steps:**
-**1.** Clone the repository and upload https://github.com/shantanutrip/covid_flight_analysis/blob/master/Code/driver.py on your hpc VM. 
+
+1. Clone the repository and upload https://github.com/shantanutrip/covid_flight_analysis/blob/master/Code/driver.py on your hpc VM. 
 
 ***Note, from step 2 onwards (including step 2), all the commands will be typed on the hpc VM.***
 
-**2.** To begin with, let us remove any folders on hfs that have the same name as our resultant datasets: 
+2. To begin with, let us remove any folders on hfs that have the same name as our resultant datasets: 
   a.```hfs -rm -r covid_flight_count_data.out``` 
   b.```hfs -rm -r inter_city_flight_data.out```
 
-**3.** The following command will take 5 to 10 minutes to run. This is because one of the input datasets is huge.
+3. The following command will take 5 to 10 minutes to run. This is because one of the input datasets is huge.
+
 ```
 spark-submit --conf \
 spark.pyspark.python=/share/apps/python/3.6.5/bin/python \
@@ -69,7 +71,9 @@ driver.py \
 <path to merged_flight.csv> \
 <path to disease.csv>
 ```
+
 For eg., if all the above datasets exist in ```Datasets/``` folder on hfs, the command would look like:
+
 ```
 spark-submit --conf \
 spark.pyspark.python=/share/apps/python/3.6.5/bin/python \
@@ -81,25 +85,27 @@ Datasets/merged_flight.csv \
 Datasets/disease.csv
 ```
 
-**4.** 
+4.
 Once the data is successfully made on hfs, we can get the merged file to our hpc VM using the following commands:
 
 ```hfs -getmerge inter_city_flight_data.out data_intercity_with_multiple_headers.csv```
 
 ```hfs -getmerge covid_flight_count_data.out data_covid_with_multiple_headers.csv```
 
-**5.** The files we have received have multiple headers and we want to get rid of them using the following commands:
+5. The files we have received have multiple headers and we want to get rid of them using the following commands:
 
 ```awk 'BEGIN{f=""}{if($0!=f){print $0}if(NR==1){f=$0}}' data_intercity_with_multiple_headers.csv > inter_city_flight_data.csv```
 
 ```awk 'BEGIN{f=""}{if($0!=f){print $0}if(NR==1){f=$0}}' data_covid_with_multiple_headers.csv > covid_flight_count_data.csv```
 
-**6.** We can remove the files with multiple headers:
+6. We can remove the files with multiple headers:
+
 ```rm data_covid_with_multiple_headers.csv```
 
 ```rm data_intercity_with_multiple_headers.csv```
 
-**7.** Your current directory in the hpc cluster has the following 2 resultant dataset files: 
+7. Your current directory in the hpc cluster has the following 2 resultant dataset files: 
+
 ```inter_city_flight_data.csv```
 
 ```covid_flight_count_data.csv```
