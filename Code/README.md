@@ -110,7 +110,7 @@ Once the data is successfully made on hfs, we can get the merged file to our hpc
 
 ```covid_flight_count_data.csv```
 
-The datasets are present in the following
+The resultant datasets are present in the following
 https://github.com/shantanutrip/covid_flight_analysis/tree/master/Resultant_Data
 
 

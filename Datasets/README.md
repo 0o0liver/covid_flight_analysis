@@ -41,3 +41,32 @@ This dataset contains information of every airport in the world, this dataset is
 * Name: Name of airports
 * Municipality: Name of the city that each airport is located. 
 
+## city_list.csv 
+1. city_list.csv already exists in the current folder.
+2. It consists of city,state names we will be considering for the study.
+3. If required, a new city,state could be added to the csv to include that in the study.
+4. Upload the finalised city_list.csv to hfs
+
+## map_list.csv 
+1. map_list.csv already exists in the current folder.
+2. It consists of a mapping from some other name of a city to the name we desire to have in our dataset.
+3. map_list.csv will contain a mapping for some_other_name_of_the_city --> desired_name
+4. If we want to call "Washington D.C." as "Washington", "New York" as "New York City" and "District of Columbia" as Washington, the map_list.csv would look like:
+```
+Washington D.C.,Washington
+New York,New York City
+District of Columbia,Washington
+```  
+5. Upload map_list.csv on hfs
+
+## Next Step:
+
+As of now, we shall have the following data uploaded to hfs:
+1. disease.csv
+2. airports.csv
+3. city_list.csv
+4. map_list.csv
+5. merged_flight.csv
+
+Once we have this successfully uploaded this on hfs, we can move forward with the driver code to generate our 2 desired datasets. Steps can be found at: https://github.com/shantanutrip/covid_flight_analysis/tree/master/Code
+
