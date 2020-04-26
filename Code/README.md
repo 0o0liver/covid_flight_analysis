@@ -49,7 +49,7 @@ The **input** of the script will be the **5 initial datasets i.e. disease.csv, a
 
 The **output** of the script will be 2 dataset folders which will  be saved by the script on hfs. The datasets will be called **inter_city_flight_data.out** and **covid_flight_count_data.out**.
 
-**We need to follow the given steps:**
+## We need to follow the given steps: ##
 
 1. Clone the repository and upload https://github.com/shantanutrip/covid_flight_analysis/blob/master/Code/driver.py on your hpc VM. 
 
