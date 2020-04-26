@@ -30,7 +30,7 @@ Flight and Covid daily count on merged_flight.csv:
 +------+----------+-----+------+---------------------+---------------------+
 ```
 
-## How to run the script: ##
+# How to run the script: #
 
 To run the script, we need to go through the process of making initial datasets. The process is mentioned on https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets.
 
