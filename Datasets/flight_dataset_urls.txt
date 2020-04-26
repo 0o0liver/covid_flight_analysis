@@ -1,0 +1,3 @@
+https://opensky-network.org/datasets/covid-19/flightlist_20200101_20200131.csv.gz
+https://opensky-network.org/datasets/covid-19/flightlist_20200201_20200229.csv.gz
+https://opensky-network.org/datasets/covid-19/flightlist_20200301_20200331.csv.gz
