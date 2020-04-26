@@ -35,8 +35,19 @@ Flight and Covid daily count on merged_flight.csv:
 |BOSTON|2020-02-04|    1|     0|                  423|                  424|
 +------+----------+-----+------+---------------------+---------------------+
 ```
-# How to generate the resultant data using the repo: #
+# How to generate the resultant data using all the detailed steps: (Long Process) #
 
 1. Get the raw data by referring to the Readme file of the Datasets folder: https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets
 
 2. On this raw data, run the driver.py script. For this, refer to the Readme file of the Code folder: https://github.com/shantanutrip/covid_flight_analysis/tree/master/Code
+
+# How to generate the resultant data by using the already made raw data: (Short Process) #
+
+1. Since we have already made the raw data, the user can upload the following datasets to the hfs: <br>
+  a. [disease.csv](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Disease_data) <br>
+  b. [merged_flight.csv] - provide google drive link please <br>
+  c. [airports.csv](https://ourairports.com/data/airports.csv) <br>
+  d. [city_list.csv](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv) <br>
+  e. [map_list.csv](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/map_list.csv) <br>
+
+2. Follow steps from the Readme file of the Code folder: https://github.com/shantanutrip/covid_flight_analysis/tree/master/Code.
