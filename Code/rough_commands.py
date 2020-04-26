@@ -11,6 +11,12 @@ DEST = 6
 IDENT = 1 #ident
 CITY_INDEX = 0
 
+map_list_path = 'Datasets/map_list.csv'
+city_list_path = 'Datasets/city_list.csv'
+airport_dataset_path = 'Datasets/airports.csv'
+merged_flight_dataset_path = 'Datasets/merged_flight.csv'
+covid_disease_dataset_path = 'Datasets/disease.csv'
+
 def processString(input_string):
 	if input_string == None:
 		return input_string
@@ -205,17 +211,17 @@ def getCovidFlightCountDataFrame():
 def saveData(df, filename):
 	df.write.option("header","true").csv(filename)
 
-city_mapper = getCityMapper('Datasets/map_list.csv')
-city_list = getCityList('Datasets/city_list.csv')
+city_mapper = getCityMapper(map_list_path)
+city_list = getCityList(city_list_path)
 airport_type_list = getAirportTypeListFor(['medium_airport','large_airport'])
-airport_dataframe = getAirportDataDFrame('Datasets/airports.csv')
-all_airport_codes = getAllAirportCodes()
-only_city_list_airport_codes = getOnlyCityListAirportCodes()
-flight_dataframe = getFlightDataFrame('Datasets/merged_flight.csv')
-covid_dataframe = getCovidDataFrame('Datasets/disease.csv')
-inter_city_flight_dataframe = getInterCityFlightDataFrame()
-city_from_and_to_flight_counts_dataframe = getCityFromAndToFlightCountsDataFrame()
-covid_flight_count_dataframe = getCovidFlightCountDataFrame()
+airport_dataframe = getAirportDataDFrame(airport_dataset_path)
+all_airport_codes = getAllAirportCodes() ##Uses airport_dataframe
+only_city_list_airport_codes = getOnlyCityListAirportCodes() ##Uses airport_dataframe
+flight_dataframe = getFlightDataFrame(merged_flight_dataset_path)
+covid_dataframe = getCovidDataFrame(covid_disease_dataset_path)
+inter_city_flight_dataframe = getInterCityFlightDataFrame() ##Uses flight_dataframe and airport_dataframe
+city_from_and_to_flight_counts_dataframe = getCityFromAndToFlightCountsDataFrame()  ##Uses inter_city_flight_dataframe
+covid_flight_count_dataframe = getCovidFlightCountDataFrame() ##Uses inter_city_flight_dataframe and covid_dataframe
 
 saveData(inter_city_flight_dataframe, 'inter_city_flight_data.out')
 saveData(covid_flight_count_dataframe, 'covid_flight_count_data.out')
