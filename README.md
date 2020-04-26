@@ -35,3 +35,8 @@ Flight and Covid daily count on merged_flight.csv:
 |BOSTON|2020-02-04|    1|     0|                  423|                  424|
 +------+----------+-----+------+---------------------+---------------------+
 ```
+# How to generate the resultant data using the script: #
+
+1. Get the raw data by referring to the Readme file of the Datasets folder: https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets
+
+2. On this raw data, run the driver.py script. For this, refer to the Readme file of the Code folder: https://github.com/shantanutrip/covid_flight_analysis/tree/master/Code
