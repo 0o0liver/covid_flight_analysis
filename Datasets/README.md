@@ -37,7 +37,7 @@ Due to the large size of this file, we are not able to upload it to this repo, t
 9. Upload ```merged_flight.csv``` on hfs.
 
 ## airports.csv
-This dataset contains information of every airport in the world, this dataset is provided by [OurAirports](https://ourairports.com/) and can be downloaded [here](https://ourairports.com/data/airports.csv). This dataset has 18 columns of information for each airport, we only utilized 4 of the 18, they are *ident*, *type*, *name* and *municipality*. Please upload ```airports.csv``` on hfs.
+This dataset contains information of every airport in the world, this dataset is provided by [OurAirports](https://ourairports.com/) and can be downloaded [here](https://ourairports.com/data/airports.csv), as well as from the current folder. This dataset has 18 columns of information for each airport, we only utilized 4 of the 18, they are *ident*, *type*, *name* and *municipality*. Please upload ```airports.csv``` on hfs.
 * Ident: ICAO 4-characters code of airports
 * Type: Type of airports, for the scope of this project, we only care about “large_airport” and “medium_airport”.
 * Name: Name of airports
