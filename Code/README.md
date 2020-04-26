@@ -107,7 +107,7 @@ Once the data is successfully made on hfs, we can get the merged file to our hpc
 
 ```rm data_intercity_with_multiple_headers.csv``` <br>
 
-9. You have reached the end of the process. Your current directory in the hpc cluster has the following 2 resultant dataset files: <br>
+9. **You have reached the end of the process. Your current directory in the hpc cluster has the following 2 resultant dataset files:** <br>
 
 ```inter_city_flight_data.csv``` <br>
 
