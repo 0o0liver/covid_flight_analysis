@@ -1,23 +1,107 @@
-# Initial Data Processing For Airport, Flight and Covid Dataset #
+# Driver code to generate the desired datasets #
 
-**Currently the script is called rough_commands.py** 
-**It runs fine. The name will be changed later**
+### The driver.py helps in making the 2 clean datasets that will be used for further analysis. The resultant dataset are: ###
 
-To run the script, we need to have the following data in the hpc:
-1. Datasets/us-counties.csv 
-2. Datasets/merged_flight.csv
-3. Datasets/airports.csv
-4. Datasets/map_list.csv
-5. Datasets/city_list.csv
+1. `inter_city_flight_data.csv` : This dataset records the details about different flights on different days. 
+Dataset looks like:
+```
++--------------------+------------+---------+----------+----------+             
+|           from_city|from_airport|  to_city|to_airport|       day|
++--------------------+------------+---------+----------+----------+
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-02-15|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-02-17|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-02-21|
+|WILKES-BARRE/SCRA...|        KAVP|CHARLOTTE|      KCLT|2020-02-21|
++--------------------+------------+---------+----------+----------+
+```
 
-Once we have the above files in hpc, we can run the script.
+2. `covid_flight_count_data.csv` : For every city, this dataset, records the daily count of COVID cases/deaths and number of flights flying to and fro from that city on that particular day. 
+Dataset looks like:
+```
+Flight and Covid daily count on merged_flight.csv:
++------+----------+-----+------+---------------------+---------------------+    
+|  city|       day|cases|deaths|incoming_flight_count|outgoing_flight_count|
++------+----------+-----+------+---------------------+---------------------+
+|BOSTON|2020-02-01|    1|     0|                  341|                  310|
+|BOSTON|2020-02-02|    1|     0|                  299|                  293|
+|BOSTON|2020-02-03|    1|     0|                  395|                  405|
+|BOSTON|2020-02-04|    1|     0|                  423|                  424|
++------+----------+-----+------+---------------------+---------------------+
+```
 
-The script:
-1. Cleans the dataset
-2. Standardises the dataset. Removes leading and trailing spaces and converts the entire data into upper case.
-2. Maps the city names to the desired names using map_list.csv
-3. Filters the cities specified by the user in city_list.csv
-4. Currnetly, gives us the following datagrams at the end.
+## How to run the script: ##
+
+To run the script, we need to go through the process of making initial datasets. The process is mentioned on https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets.
+
+After we successfully get the initial data using the link above, we will have the following data on our hfs:
+1. disease.csv
+2. airports.csv
+3. city_list.csv
+4. map_list.csv
+5. merged_flight.csv
+
+Once we have the above files in hfs, we can run the script.
+
+**The only script we will be running is driver.py.**
+
+The **input** of the script will be the **5 initial datasets i.e. disease.csv, airports.csv, city_list.csv, map_list.csv and merged_flight.csv**.
+
+The **output** of the script will be 2 dataset folders which will  be saved by the script on hfs. The datasets will be called **inter_city_flight_data.out** and **covid_flight_count_data.out**.
+
+
+We need to follow the given steps:
+1. Clone the repository and upload https://github.com/shantanutrip/covid_flight_analysis/blob/master/Code/driver.py on your hpc VM. 
+
+***Note, from step 2 onwards (including step 2), all the commands will be typed on the hpc VM.***
+
+2. To begin with, let us remove any folders on hfs that have the same name as our resultant datasets: 
+  a.```hfs -rm -r covid_flight_count_data.out``` 
+  b.```hfs -rm -r inter_city_flight_data.out```
+
+3. The following command will take 5 to 10 minutes to run. This is because one of the input datasets is huge.
+```
+spark-submit --conf \
+spark.pyspark.python=/share/apps/python/3.6.5/bin/python \
+driver.py \
+<hfs path to map_list.csv> \
+<hfs path to city_list.csv> \
+<hfs path to airports.csv> \
+<path to merged_flight.csv> \
+<path to disease.csv>
+```
+For eg., if all the above datasets exist in ```Datasets/``` folder on hfs, the command would look like:
+```
+spark-submit --conf \
+spark.pyspark.python=/share/apps/python/3.6.5/bin/python \
+driver.py \
+Datasets/map_list.csv \
+Datasets/city_list.csv \
+Datasets/airports.csv \
+Datasets/merged_flight.csv \
+Datasets/disease.csv
+```
+
+4. 
+Once the data is successfully made on hfs, we can get the merged file to our hpc VM using the following commands:
+
+```hfs -getmerge inter_city_flight_data.out data_intercity_with_multiple_headers.csv```
+```hfs -getmerge covid_flight_count_data.out data_covid_with_multiple_headers.csv```
+
+5. The files we have received have multiple headers and we want to get rid of them using the following commands:
+
+```awk 'BEGIN{f=""}{if($0!=f){print $0}if(NR==1){f=$0}}' data_intercity_with_multiple_headers.csv > inter_city_flight_data.csv```
+```awk 'BEGIN{f=""}{if($0!=f){print $0}if(NR==1){f=$0}}' data_covid_with_multiple_headers.csv > covid_flight_count_data.csv```
+
+6. We can remove the files with multiple headers:
+```rm data_covid_with_multiple_headers.csv```
+```rm data_intercity_with_multiple_headers.csv```
+
+7. Your current directory in the hpc cluster has the following 2 resultant dataset files: 
+```inter_city_flight_data.csv```
+```covid_flight_count_data.csv```
+
+The datasets are present in the following
+https://github.com/shantanutrip/covid_flight_analysis/tree/master/Resultant_Data
 
 ```
 covid_dataframe:
