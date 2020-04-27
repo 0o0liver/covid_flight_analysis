@@ -44,7 +44,7 @@ Flight and Covid daily count on merged_flight.csv:
 # How to generate the resultant data by using the already made raw data: (Short Process) #
 
 1. Since we have already made the raw data, the user can upload the following datasets to the hfs: <br>
-  a. [disease.csv](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Disease_data) <br>
+  a. [disease.csv](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/disease.csv) <br>
   b. [merged_flight.csv](https://drive.google.com/file/d/1zKgvS8CPvwv2MtJjLRsL70DImFyYIiNC/view?usp=sharing) <br>
   c. [airports.csv](https://ourairports.com/data/airports.csv) <br>
   d. [city_list.csv](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv) <br>
