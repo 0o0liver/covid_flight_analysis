@@ -7,8 +7,8 @@ This dataset contains four columns: *city*, *date*, *cases* and *deaths* and you
 * Deaths: This represents the cumulative death number for considered cities day by day.
 
 To get this file from raw data, we use the data source from an [authoritative webpage](https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv) <br>
-Here is some instructions to output one csv file we want:
-1. Under the folder named “*Disease_data*”, download every file.
+Here are instructions to generate ```disease.csv```:
+1. Download [```construct.py```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Code/construct.py) and [```city_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv) and place them under the same directory.
 2. Run "*construct.py*" by ```python construct.py 'str'```, where ```str``` can be replaced by the months you are interested in. If you want every month from the beginning of the spread of the epidemic, ```str``` should be ```01,02,03,04```; while ```03``` for only March.
 3. Then, there will be a csv file outputted. Four columns are ordered by city and date.
 4. Upload ```disease.csv``` on hfs
