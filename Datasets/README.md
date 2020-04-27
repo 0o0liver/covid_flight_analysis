@@ -1,14 +1,14 @@
 # Explanation and Generation of datasets
 ## disease.csv:
 This dataset contains four columns: *city*, *date*, *cases* and *deaths* and you can find this dataset in the current folder. <br>
-* City: In order to make more precise analysis, we need to find the cities with large populations and big amounts of flights per day. So, we chose these cities from the top 25 largest cities around the US. City list can be found inside ```city_list.txt``` where each line represents “*city*, *state*”.
+* City: In order to make more precise analysis, we need to find the cities with large populations and big amounts of flights per day. So, we chose these cities from the top 25 largest cities around the US. City list can be found inside ```city_list.csv``` where each line represents “*city*, *state*”.
 * Date: Given the very first case of the US appears in January and only less than 10 cities have the first case before March, so we will mainly consider the epidemic situation for March and April. However, the generated dataset still includes lines of data for January and February.
 * Cases: This represents the cumulative infected number for considered cities day by day. 
 * Deaths: This represents the cumulative death number for considered cities day by day.
 
 To get this file from raw data, we use the data source from an [authoritative webpage](https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv) <br>
 Here is some instructions to output one csv file we want:
-1. Under the same folder named “*Disease_data*”, download every file.
+1. Under the folder named “*Disease_data*”, download every file.
 2. Run "*construct.py*" by ```python construct.py 'str'```, where ```str``` can be replaced by the months you are interested in. If you want every month from the beginning of the spread of the epidemic, ```str``` should be ```01,02,03,04```; while ```03``` for only March.
 3. Then, there will be a csv file outputted. Four columns are ordered by city and date.
 4. Upload ```disease.csv``` on hfs
