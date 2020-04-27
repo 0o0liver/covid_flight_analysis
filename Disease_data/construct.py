@@ -32,4 +32,4 @@ Database = sorted(Database, key=(lambda x:[x[0], x[1]]))
 
 ## Export the data
 Export_Data = pd.DataFrame(columns=Column, data=Database)
-Export_Data.to_csv('Disease.csv', index=False)
+Export_Data.to_csv('disease.csv', index=False)
