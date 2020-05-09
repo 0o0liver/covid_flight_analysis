@@ -1,7 +1,7 @@
 # Explanation and Generation of datasets
 ## disease.csv:
 This dataset contains four columns: *city*, *date*, *cases* and *deaths* and you can find this dataset in the current folder. <br>
-* City: In order to make more precise analysis, we need to find the cities with large populations and big amounts of flights per day. So, we chose these cities from the top 25 largest cities around the US. City list can be found inside ```city_list.csv``` where each line represents “*city*, *state*”.
+* City: In order to make more precise analysis, we need to find the cities with large populations and big amounts of flights per day. So, we chose these cities from the top 37 largest cities around the US. City list can be found inside ```city_list.csv``` where each line represents “*city*, *state*”.
 * Date: Given the very first case of the US appears in January and only less than 10 cities have the first case before March, so we will mainly consider the epidemic situation for March and April. However, the generated dataset still includes lines of data for January and February.
 * Cases: This represents the cumulative infected number for considered cities day by day. 
 * Deaths: This represents the cumulative death number for considered cities day by day.
