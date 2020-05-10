@@ -4,7 +4,7 @@
 |------------------|
 |Airline with COVID|
 
-| Team Member Name | NetId|
+| Team Member      | NetId|
 |------------------|------|
 | Shantanu Tripathi|st3810|
 |         Dongzi Qu| dq394|
@@ -16,19 +16,13 @@ COVID-19 is spreading widely and rapidly across the globe, from China to Europe,
 # Datasets used
 
 ## Raw Data
-* us-counties.csv: This dataset contains county level COVID-19 information in the United States, and it is updated daily by New York Times. Columns of interest are date, county, state, cases and deaths. This dataset can be viewed and downloaded from [here](https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv).
-* Flights: This dataset contains worldwide flight information within the first 4 months of 2020, and it consists of 4 data files, each data file contains 1 month of flight information. This dataset is provided by OpenSky Network for combating COVID-19, and it is updated monthly. This dataset can be downloaded [here](https://opensky-network.org/datasets/covid-19/).
-* airports.csv: This dataset contains information for every airport in the world, and it is provided and maintained daily by OurAirports. This dataset is used for elaborating flight information, such as adding county and state information for destination airport and origin airport for interested flights. This dataset can be downloaded [here](https://ourairports.com/data/airports.csv).
+* **us-counties.csv**: This dataset contains county level COVID-19 information in the United States, and it is updated daily by New York Times. Columns of interest are date, county, state, cases and deaths. This dataset can be viewed and downloaded from [here](https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv).
+* **Flights**: This dataset contains worldwide flight information within the first 4 months of 2020, and it consists of 4 data files, each data file contains 1 month of flight information. This dataset is provided by OpenSky Network for combating COVID-19, and it is updated monthly. This dataset can be downloaded [here](https://opensky-network.org/datasets/covid-19/).
+* **airports.csv**: This dataset contains information for every airport in the world, and it is provided and maintained daily by OurAirports. This dataset is used for elaborating flight information, such as adding county and state information for destination airport and origin airport for interested flights. This dataset can be downloaded [here](https://ourairports.com/data/airports.csv).
 
 ## Generated Data
 
-**Link to the Reslutant Datasets:** https://github.com/shantanutrip/covid_flight_analysis/tree/master/Resultant_Data
-
-## Details of the datasets being generated: ##
-
-### The repo helps in making the 2 clean datasets that will be used for further analysis. The resultant datasets are: ###
-
-1. `inter_city_flight_data.csv` : This dataset records the details about different flights on different days. 
+* **inter_city_flight_data.csv**: This dataset records the details about different flights on different days. 
 Dataset looks like:
 ```
 +--------------------+------------+---------+----------+----------+             
@@ -41,7 +35,7 @@ Dataset looks like:
 +--------------------+------------+---------+----------+----------+
 ```
 
-2. `covid_flight_count_data.csv` : For every city, this dataset, records the daily count of COVID cases/deaths and number of flights flying to and fro from that city on that particular day. 
+* **covid_flight_count_data.csv**: For every city, this dataset, records the daily count of COVID cases/deaths and number of flights flying to and fro from that city on that particular day. 
 Dataset looks like:
 
 ```
