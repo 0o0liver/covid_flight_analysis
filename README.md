@@ -71,3 +71,9 @@ Flight and Covid daily count on merged_flight.csv:
 * To address the issue of different spatial resolution, we used the geopy library to calculate the county information using each airport’s coordinates.
 * To address the issue of different naming conventions, we constructed the [```map_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/map_list.csv) for the cities listed in [```city_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv), it contains pairs of names that are different but representing the same city. Beyond the scope of this project, we would have to use geopy to standardize names.  
 
+# Analysis
+
+## COVID-19 Impacts Air Travel Industry:
+As expected, the air travel industry is being negatively impacted by COVID-19. We came to this conclusion by plotting the number flights along with the COVID-19 cases number for each interested city over the course of the pandemic. It clearly shows that the amount of flights decreases dramatically as the number of COVID-19 cases increases. Below is a sample plotting for the city of San Francisco. Complete set of graphs can be found [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Analysis/COVID_vs_Flight_Graphs). Reproducible implementation of such a task can be found [here](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Analysis/Analysis_Filght_Covid_Colab.ipynb).
+![Sample plotting](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Analysis/COVID_vs_Flight_Graphs/SAN%20FRANCISCO.jpg)
+
