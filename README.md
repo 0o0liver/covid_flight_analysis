@@ -4,7 +4,7 @@ An attempt to analyse the affect of flights on the spread of COVID and vice vers
 
 **Link to the Reslutant Datasets:** https://github.com/shantanutrip/covid_flight_analysis/tree/master/Resultant_Data
 
-## Deatils of the datasets being generated: ##
+## Details of the datasets being generated: ##
 
 ### The repo helps in making the 2 clean datasets that will be used for further analysis. The resultant datasets are: ###
 
