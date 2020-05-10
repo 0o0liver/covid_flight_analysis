@@ -20,7 +20,7 @@ Supplementary instructions:
 
 
 ## merged_flight.csv
-This dataset contains information of every flight during the first three months of 2020. This dataset is generated from data that was provided by [Opensky Network](https://opensky-network.org/), source files can be found [here](https://opensky-network.org/datasets/covid-19/). There are 10 columns in this dataset, however, we only utilized 3 of the 10, they are *origin*, *destination* and *day*. 
+This dataset contains information of every flight during the first four months of 2020. This dataset is generated from data that was provided by [Opensky Network](https://opensky-network.org/), source files can be found [here](https://opensky-network.org/datasets/covid-19/). There are 10 columns in this dataset, however, we only utilized 3 of the 10, they are *origin*, *destination* and *day*. 
 * Origin: ICAO 4-characters code of the origin airport.
 * Destination: ICAO 4-characters code of the destination airport.
 * Day: Date of each flight.
