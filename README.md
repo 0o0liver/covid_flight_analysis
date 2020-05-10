@@ -70,6 +70,7 @@ Flight and Covid daily count on merged_flight.csv:
 ## Process
 * To address the issue of different spatial resolution, we used the geopy library to calculate the county information using each airport’s coordinates.
 * To address the issue of different naming conventions, we constructed the [```map_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/map_list.csv) for the cities listed in [```city_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv), it contains pairs of names that are different but representing the same city. Beyond the scope of this project, we would have to use geopy to standardize names.  
+* To standardize column name in flight data files, [```clean.py```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/clean.py) script needs to run for this purpose. Instructions can be found [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets#merged_flightcsv)
 
 # Analysis
 
