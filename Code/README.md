@@ -1,4 +1,22 @@
-# Driver code to generate the desired datasets #
+# construct.py to generate the desired dataset #
+
+`disease.csv`: This datasets contains COVID-19 data for cities in [`city_list.csv`](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv).
+Dataset looks like:
+```
++--------------------+-----------+------------+    
+|     City|      Date|      Cases|      Deaths|
++--------------------+-----------+------------+
+|Allegheny|2020-03-14|          1|           0|
+|Allegheny|2020-03-15|          3|           0|
+|Allegheny|2020-03-16|          5|           0|
+|Allegheny|2020-03-17|         10|           0|
++--------------------+------------+-----------+
+```
+
+## How to run the script: ##
+See detailed instruction [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets#diseasecsv)
+
+# driver.py to generate the desired datasets #
 
 ### The driver.py helps in making the 2 clean datasets that will be used for further analysis. The resultant datasets are: ###
 
@@ -30,7 +48,7 @@ Flight and Covid daily count on merged_flight.csv:
 +------+----------+-----+------+---------------------+---------------------+
 ```
 
-# How to run the script: #
+## How to run the script: ##
 
 In case you are following the Long Process, to run the script, we need to go through the process of making initial datasets. The process is mentioned on https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets. In case you are following the Short Process, you do not need to do this.
 
