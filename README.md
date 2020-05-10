@@ -34,9 +34,9 @@ COVID-19 is spreading widely and rapidly across the globe, from China to Europe,
 +--------------------+-----------+------------+
 ```
 
-* **merged_flight.csv**: This dataset is generated from all 4 flight data files, it keeps all columns from the original datafiles. This dataset is generated to benefit our analytic models to easily load flight information without having to deal with multiple data files. Generation instruction is provided [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets#merged_flightcsv).
+* **merged_flight.csv**: This dataset is generated from all 4 flight data files, it keeps all columns from the original datafiles. This dataset is generated to benefit our analytic models to easily load flight information without having to deal with multiple data files. Generation instruction is provided [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets#merged_flightcsv). Complete dataset can be found [here](https://drive.google.com/file/d/1NU0pVbESGXNOVja2vs4yxGaWe9khz728/view?usp=sharing).
 
-* **inter_city_flight_data.csv**: This dataset contains information for every flight between cities listed in [```city_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv). It is generated from ```merged_flight.csv``` using [```driver.py```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Code/driver.py). Generation instruction is provided [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Code#driverpy-to-generate-the-desired-datasets). Complete dataset can be found [here](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Resultant_Data/inter_city_flight_data.csv). Sample dataset is provided below.
+* **inter_city_flight_data.csv**: This dataset contains information for every flight between cities listed in [```city_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv). It is generated from [```merged_flight.csv```](https://drive.google.com/file/d/1NU0pVbESGXNOVja2vs4yxGaWe9khz728/view?usp=sharing) using [```driver.py```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Code/driver.py). Generation instruction is provided [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Code#driverpy-to-generate-the-desired-datasets). Complete dataset can be found [here](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Resultant_Data/inter_city_flight_data.csv). Sample dataset is provided below.
 ```
 +--------------------+------------+---------+----------+----------+             
 |           from_city|from_airport|  to_city|to_airport|       day|
@@ -48,7 +48,7 @@ COVID-19 is spreading widely and rapidly across the globe, from China to Europe,
 +--------------------+------------+---------+----------+----------+
 ```
 
-* **covid_flight_count_data.csv**: This dataset contains information for every city listed in [```city_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv), for every date since the spread on COVID-19 in that city, the number of COVID-19 cases and deaths, as well as the amount of incoming and outgoing flights. This data is generated from ```merged_flight.csv```, [```airports.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/airports.csv) and [```disease.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/disease.csv). Generation instruction is provided [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Code#driverpy-to-generate-the-desired-datasets). Complete dataset can be found [here](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Resultant_Data/covid_flight_count_data.csv). Sample dataset is provided below.
+* **covid_flight_count_data.csv**: This dataset contains information for every city listed in [```city_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv), for every date since the spread on COVID-19 in that city, the number of COVID-19 cases and deaths, as well as the amount of incoming and outgoing flights. This data is generated from [```merged_flight.csv```](https://drive.google.com/file/d/1NU0pVbESGXNOVja2vs4yxGaWe9khz728/view?usp=sharing), [```airports.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/airports.csv) and [```disease.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/disease.csv). Generation instruction is provided [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Code#driverpy-to-generate-the-desired-datasets). Complete dataset can be found [here](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Resultant_Data/covid_flight_count_data.csv). Sample dataset is provided below.
 ```
 Flight and Covid daily count on merged_flight.csv:
 +------+----------+-----+------+---------------------+---------------------+    
@@ -60,19 +60,6 @@ Flight and Covid daily count on merged_flight.csv:
 |BOSTON|2020-02-04|    1|     0|                  423|                  424|
 +------+----------+-----+------+---------------------+---------------------+
 ```
-# How to generate the resultant data using all the detailed steps: (Long Process) #
-
-1. Get the raw data by referring to the Readme file of the Datasets folder: https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets
-
-2. On this raw data, run the driver.py script. For this, refer to the Readme file of the Code folder: https://github.com/shantanutrip/covid_flight_analysis/tree/master/Code
-
-# How to generate the resultant data by using the already made raw data: (Short Process) #
-
-1. Since we have already made the raw data, the user can upload the following datasets to the hfs: <br>
-  a. [disease.csv](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/disease.csv) <br>
-  b. [merged_flight.csv](https://drive.google.com/file/d/1NU0pVbESGXNOVja2vs4yxGaWe9khz728/view?usp=sharing) <br>
-  c. [airports.csv](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/airports.csv) <br>
-  d. [city_list.csv](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv) <br>
-  e. [map_list.csv](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/map_list.csv) <br>
-
-2. Follow steps from the Readme file of the Code folder: https://github.com/shantanutrip/covid_flight_analysis/tree/master/Code.
+# Data Cleaning
+## Process
+## Challenges
