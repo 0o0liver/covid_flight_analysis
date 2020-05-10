@@ -97,4 +97,6 @@ In this analysis, we aim to discover how possible the spread of disease in one t
 2. Filter the flights from the **N_all**, choose the flights that the disease has already spreaded out in their source cities. In other words, the start date of disease in these cities should be earlier than the target city. Also the average disease number in these cities should be larger than a threshold. --> (**N_filtered**)
 3. The proportion: **Flight_ratio** = **N_filtered** / **N_all**
 
-We propose that the higher value of the **Flight_ratio** means the higher possible for the target city get "infected" via the airlines from other cities. Below is the line chart for all the target cities we considered about. More detailed explanation/charts and reproducible implementation of this analysis can be found [here](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Analysis/Flight_Impacts_COVID_Advance.ipynb)
+We propose that the higher value of the **Flight_ratio** means the higher possible for the target city get "infected" via the airlines from other cities. Below is the line chart for the ratio of all the target cities we considered about. More detailed explanation/charts and reproducible implementation of this analysis can be found [here](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Analysis/Flight_Impacts_COVID_Advance.ipynb).
+
+![Imgur](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Archive/line%20chart.png)
