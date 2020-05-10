@@ -22,7 +22,7 @@ COVID-19 is spreading widely and rapidly across the globe, from China to Europe,
 
 ## Generated Data
 
-* **disease.csv**: This dataset is generated from ```us-counties.csv``` using [```construct.py```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Code/construct.py). This dataset contains COVID-19 information for interested counties, which is listed in [```city_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv). Generation instruction is provided [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets#diseasecsv). Complete dataset can be found [here](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/disease.csv). Sample dataset is provided below.
+* **disease.csv**: This dataset is generated from [```us-counties.csv```](https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv) using [```construct.py```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Code/construct.py). This dataset contains COVID-19 information for interested counties, which is listed in [```city_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv). Generation instruction is provided [here](https://github.com/shantanutrip/covid_flight_analysis/tree/master/Datasets#diseasecsv). Complete dataset can be found [here](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/disease.csv). Sample dataset is provided below.
 ```
 +--------------------+-----------+------------+    
 |     City|      Date|      Cases|      Deaths|
