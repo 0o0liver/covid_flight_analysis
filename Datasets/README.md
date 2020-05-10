@@ -27,14 +27,15 @@ This dataset contains information of every flight during the first four months o
 
 Due to the large size of this file, we are not able to upload it to this repo, therefore, instructions on how to generate ```merged_flight.csv``` is provided below:
 1. Download file ```flight_dataset_urls.txt``` from the repo and place it to the desired directory in the HPC vm.
-2. Run command ```cat flight_dataset_urls.txt | xargs -n 1 -P 8 wget -c -P flight/``` to download three individual zipped dataset files to the flight directory.
+2. Run command ```cat flight_dataset_urls.txt | xargs -n 1 -P 8 wget -c -P flight/``` to download three individual zipped dataset files to a directory called ```flight```.
 3. Navigate to flight directory using ```cd flight```.
-4. Run command ```gunzip *.gz``` to unzip three individual dataset files.
+4. Run command ```find . -name "*.gz" | xargs gunzip``` to unzip three individual dataset files.
 5. Navigate back to the previous directory using ```cd ..```.
-6. Run command ```hfs -put flight``` to upload flight directory to the distributed file system.
-7. Run command ```hfs -getmerge flight flight.csv``` to merge three individual dataset files to one file and download it (```flight.csv``` will have two extra header lines because ```-getmerge``` command performs plain concatenation of files, step 8 takes care of this issue).
-8. Run command ```awk 'BEGIN{f=""}{if($0!=f){print $0}if(NR==1){f=$0}}' flight.csv > merged_flight.csv``` to get rid of the two extra header lines
-9. Upload ```merged_flight.csv``` on hfs.
+6. Run ```clean.py ``` script to standardize columns.
+7. Run command ```hfs -put flight``` to upload flight directory to the distributed file system.
+8. Run command ```hfs -getmerge flight flight.csv``` to merge three individual dataset files to one file and download it (```flight.csv``` will have two extra header lines because ```-getmerge``` command performs plain concatenation of files, step 9 takes care of this issue).
+9. Run command ```awk 'BEGIN{f=""}{if($0!=f){print $0}if(NR==1){f=$0}}' flight.csv > merged_flight.csv``` to get rid of the two extra header lines
+10. Upload ```merged_flight.csv``` on hfs.
 
 ## airports.csv
 This dataset contains information of every airport in the world, this dataset is provided by [OurAirports](https://ourairports.com/) and can be downloaded [here](https://ourairports.com/data/airports.csv), as well as from the current folder. This dataset has 18 columns of information for each airport, we only utilized 4 of the 18, they are *ident*, *type*, *name* and *municipality*. Please upload ```airports.csv``` on hfs.
