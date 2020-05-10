@@ -1,6 +1,17 @@
-# covid_flight_analysis
+# COVID_Flight_Analysis
 
-An attempt to analyse the affect of flights on the spread of COVID and vice versa
+An attempt to analyse the affect of air travel on the spread of COVID and vice versa
+
+|     Team Name    |
+|------------------|
+|Airline with COVID|
+
+| Team Member Name | NetId|
+|------------------|------|
+| Shantanu Tripathi|st3810|
+|         Dongzi Qu| dq394|
+|        Binghan Li|bl1890|
+
 
 **Link to the Reslutant Datasets:** https://github.com/shantanutrip/covid_flight_analysis/tree/master/Resultant_Data
 
