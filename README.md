@@ -91,5 +91,10 @@ In this analysis, we aim to use available data to determine which cities contrib
 We propose that the higher value of the sum of these factors means more significant contribution to the COVID-19 spread in the selected city. Below is a sample result for the city of Dallas. More detailed explanation and reproducible implementation of this task can be found [here](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Analysis/Flight_Impacts_COVID_Basic.ipynb).
 ![Imgur](https://i.imgur.com/GStwgZQ.png)
 
-## DongZi Qu's experiment title
-body
+## How Possible COVID-19 Spread by Flight
+In this analysis, we aim to discover how possible the spread of disease in one target city was resulted from the incoming flights from other "infected" cities (cases appeared earlier). Basiclly, this experiment mainly follows the previous one: tracing the origin of COVID-19 and finding the possiblities, but in more numerical way. To finish this implementation, we mainly focused on these three values:
+1. The number of all flights landing to the target city in the past two weeks before the first case in that city. --> (**N_all**)
+2. Filter the flights from the **N_all**, choose the flights that the disease has already spreaded out in their source cities. In other words, the start date of disease in these cities should be earlier than the target city. Also the average disease number in these cities should be larger than a threshold. --> (**N_filtered**)
+3. The proportion: **Flight_ratio** = **N_filtered** / **N_all**
+
+We propose that the higher value of the **Flight_ratio** means the higher possible for the target city get "infected" via the airlines from other cities. Below is the line chart for all the target cities we considered about. More detailed explanation/charts and reproducible implementation of this analysis can be found [here](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Analysis/Flight_Impacts_COVID_Advance.ipynb)
