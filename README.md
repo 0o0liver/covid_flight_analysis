@@ -61,5 +61,13 @@ Flight and Covid daily count on merged_flight.csv:
 +------+----------+-----+------+---------------------+---------------------+
 ```
 # Data Cleaning
-## Process
+
 ## Challenges
+* COVID-19 dataset is county level data, but airports dataset only provides the city name of the location of each airport. For example, “KHOU” is the airport code for William P. Hobby Airport which is located in Houston Texas. However, in COVID-19 dataset, Houston Texas is not an entry because Houston is not a county, instead Harris Texas is used in COVID-19 datasets.
+* Inconsistent city naming convention for airports data and COVID-19 data. For example, in airports dataset, "New York" is the city name of JFK, however, in COVID-19 dataset, "New York City" is the name for New York.
+* Flight data is provided in four data files with different formats, they need to be merged together for it to be easily loaded for our analytic models.
+
+## Process
+* To address the issue of different spatial resolution, we used the geopy library to calculate the county information using each airport’s coordinates.
+* To address the issue of different naming conventions, we constructed the [```map_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/map_list.csv) for the cities listed in [```city_list.csv```](https://github.com/shantanutrip/covid_flight_analysis/blob/master/Datasets/city_list.csv), it contains pairs of names that are different but representing the same city. Beyond the scope of this project, we would have to use geopy to standardize names.  
+
