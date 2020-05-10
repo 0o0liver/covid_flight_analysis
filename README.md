@@ -1,4 +1,4 @@
-# COVID_Flight_Analysis
+# COVID Flight Analysis
 
 |     Team Name    |
 |------------------|
