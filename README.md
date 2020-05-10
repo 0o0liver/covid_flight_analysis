@@ -1,7 +1,5 @@
 # COVID_Flight_Analysis
 
-An attempt to analyse the affect of air travel on the spread of COVID and vice versa
-
 |     Team Name    |
 |------------------|
 |Airline with COVID|
@@ -12,6 +10,14 @@ An attempt to analyse the affect of air travel on the spread of COVID and vice v
 |         Dongzi Qu| dq394|
 |        Binghan Li|bl1890|
 
+# Introduction
+COVID-19 is spreading widely and rapidly across the globe, from China to Europe, and now to the United States. Within the United State, the deadly virus has infected every state in less than a month. One of the reasons for such insane spreading, on top of the level of contagiousness of COVID-19, is frequent air travel. There are over one million flights happening every day worldwide, it is currently the fastest way for humans to travel to anywhere in the world, unfortunately, it is for the virus as well. Additionally, aircrafts create an environment that is beneficial for COVID-19 to spread, over 100 passengers are in a sealed cabin together for hours without a medical grade ventilation system, if one passenger is infected with the virus, it is highly possible, if not 100 percent, for other passengers to become infected. With this information in everyone’s mind, our team wants to discover how the air travel industry is being affected by COVID-19 within the United States. Furthermore, we want to utilize data to trace the origin of the virus for cities in the United States. Hope you enjoy our project!
+
+# Datasets used
+
+## Raw Data
+
+## Generated Data
 
 **Link to the Reslutant Datasets:** https://github.com/shantanutrip/covid_flight_analysis/tree/master/Resultant_Data
 
